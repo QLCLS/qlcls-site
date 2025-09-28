@@ -5,8 +5,9 @@ nav_order: 10
 # Contact
 
 [**Join Discord**](https://discord.gg/u8Ttp8frqU){: .btn .btn-primary }
+[Donate (Ko-fi)](https://ko-fi.com/lanst2025){: .btn }
 
-**Email** (obfuscated to avoid crawlers):
+**Email:**
 
 <span id="c-mail"></span>
 <script>

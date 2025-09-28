@@ -19,7 +19,7 @@ Historic partners (alphabetical):
 ## Become a sponsor {#become-a-sponsor}
 [**Talk to us on Discord**](https://discord.gg/u8Ttp8frqU){: .btn .btn-primary }
 
-Or email us (obfuscated to avoid spam):
+Or email us:
 
 <span id="s-mail"></span>
 <script>

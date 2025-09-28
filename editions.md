@@ -1,18 +1,16 @@
 ---
 title: Editions
 nav_order: 2
+has_children: true
 ---
 # Editions
 
-A quick overview of past and upcoming LAN stops.
+Quick look at the LAN stops. Click a row to open the event page.
 
-| Edition | Dates | City / Venue | Modes | Capacity | Donate | Sponsors |
-|---|---|---|---|---:|---|---|
-| **Stuttgart ’26** | 19–22 Mar 2026 | 1337 Camp, Waiblingen (DE) | CTF, Duel | 50 (CTF), 70 overall | [Ko‑fi](https://ko-fi.com/lanst2025) | TBA |
-| **Stuttgart ’25** | 20–22 Jun 2025 | 1337 Camp, Waiblingen (DE) | CTF, Duel | 40 | — | Artisan |
-| **Prague ’24** | 22–24 Mar 2024 | SkillZone.cz, Prague (CZ) | CTF, Duel | 40 | — | Artisan, Surfshark, ASUS, Starobrno, Zichovec, Dullik, Quake Pub |
+| Year | City | Logo |
+|---:|---|---|
+| [**2026** — Stuttgart](stuttgart-2026.html) | Stuttgart, Germany | ![](/assets/event-logos/stuttgart-2026.png){: width="72" } |
+| [**2025** — Stuttgart](stuttgart-2025.html) | Stuttgart, Germany | ![](/assets/event-logos/stuttgart-2025.png){: width="72" } |
+| [**2024** — Prague](prague-2024.html) | Prague, Czech Republic | ![](/assets/event-logos/prague-2024.png){: width="72" } |
 
-**Event pages**
-- [Stuttgart ’26](stuttgart-2026.md)
-- [Stuttgart ’25](stuttgart-2025.md)
-- [Prague ’24](prague-2024.md)
+> Replace the logos by uploading PNG/SVG files to **`assets/event-logos/`** with these names: `stuttgart-2026.png`, `stuttgart-2025.png`, `prague-2024.png`.

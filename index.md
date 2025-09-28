@@ -7,9 +7,9 @@ nav_order: 1
 Community-run Quake Live LAN weekends across Europe — fair, competitive, and fun.
 
 [**Join Discord**](https://discord.gg/u8Ttp8frqU){: .btn .btn-primary }
-[Register](register.md){: .btn }
-[Editions](editions.md){: .btn }
-[Sponsor Us](sponsors.md#become-a-sponsor){: .btn }
+[Register](register.html){: .btn }
+[Editions](editions.html){: .btn }
+[Sponsor Us](sponsors.html#become-a-sponsor){: .btn }
 
 ---
 ## Next event — Stuttgart ’26
@@ -18,5 +18,5 @@ Community-run Quake Live LAN weekends across Europe — fair, competitive, and f
 - **Modes:** CTF, Duel
 - **Capacity:** 50 CTF players (70 overall)
 
-[Event page](stuttgart-2026.md){: .btn }
+[Event page](stuttgart-2026.html){: .btn }
 [Donate (Ko-fi)](https://ko-fi.com/lanst2025){: .btn }

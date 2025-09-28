@@ -1,9 +1,9 @@
-# QL City LAN Series — GitHub Pages bundle
+# QL City LAN Series — GitHub Pages bundle (v4)
 
-**How to publish (web only):**
-1. Create a GitHub repo (or open your existing one).
-2. Delete `index.html` if it exists in the root.
-3. Upload everything from this folder (keep the structure with the `assets/` directory).
-4. Repo → **Settings → Pages** → Source: **Deploy from a branch** (`main` / root).
-5. If using a custom domain, set it and enable **Enforce HTTPS**.
-6. Visit your site. The logo is at `assets/logo.svg` — replace it with your own anytime.
+- Fixed non-clickable links by using explicit `.html` links for internal pages.
+- Clean schedule tables so they render properly.
+- **Register page is now a form** that emails submissions via Formspree (replace the placeholder endpoint).
+- Added **thank-you** page.
+
+## Publish
+Upload everything to your repo root and commit. Then confirm **Settings → Pages** is `main` / root.

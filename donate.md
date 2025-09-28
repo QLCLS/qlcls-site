@@ -6,4 +6,4 @@ nav_order: 11
 
 If you’d like to support venue and production costs:
 
-[**Ko‑fi — Donate**](https://ko-fi.com/lanst2025){: .btn .btn-primary }
+[**Ko-fi — Donate**](https://ko-fi.com/lanst2025){: .btn .btn-primary }
