@@ -1,0 +1,18 @@
+title: QL LAN City Series
+description: Community-run Quake Live LAN weekends across Europe.
+remote_theme: just-the-docs/just-the-docs
+plugins:
+  - jekyll-remote-theme
+color_scheme: dark
+logo: /assets/logo.svg
+favicon_ico: /assets/favicon.ico
+
+aux_links:
+  "Join Discord":
+    - "https://discord.gg/u8Ttp8frqU"
+  "Sponsor Us":
+    - "https://discord.gg/u8Ttp8frqU"
+  "Donate (Ko-fi)":
+    - "https://ko-fi.com/lanst2025"
+
+footer_content: "© {{ site.time | date: '%Y' }} QL LAN City Series"
