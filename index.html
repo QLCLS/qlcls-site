@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Results - QL City LAN Series</title>
-    <meta name="description" content="Tournament results and statistics from all QL City LAN Series events. Prague 2024, Stuttgart 2025 results.">
+    <title>QL City LAN Series - Stuttgart '26 | March 19-22, 2026</title>
+    <meta name="description" content="Premier Quake Live LAN event in Europe. CTF & Duel tournaments, Prizes, FUN. March 19-22, 2026 in Stuttgart.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.citylanseries.com/">
+    <meta property="og:title" content="QL City LAN Series - Stuttgart '26">
+    <meta property="og:description" content="Premier Quake Live LAN event in Europe. CTF & Duel tournaments, Prizes, FUN. March 19-22, 2026 in Stuttgart.">
+    <meta property="og:image" content="https://www.citylanseries.com/stuttgart-2026.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.citylanseries.com/">
+    <meta property="twitter:title" content="QL City LAN Series - Stuttgart '26">
+    <meta property="twitter:description" content="Premier Quake Live LAN event in Europe. CTF & Duel tournaments, Prizes, FUN. March 19-22, 2026 in Stuttgart.">
+    <meta property="twitter:image" content="https://www.citylanseries.com/stuttgart-2026.png">
     
     <style>
         * {
@@ -45,6 +59,12 @@
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
         }
 
         .nav-container {
@@ -89,163 +109,170 @@
             border-radius: 25px;
             text-decoration: none;
             font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        /* Header */
-        .page-header {
-            padding: 8rem 2rem 4rem;
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(0, 61, 130, 0.1));
-            text-align: center;
-        }
-
-        .page-header h1 {
-            font-size: 3rem;
-            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Event Selection */
-        .event-selector {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin: 3rem 0;
-            flex-wrap: wrap;
-        }
-
-        .event-btn {
-            padding: 1rem 2rem;
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(0, 61, 130, 0.1));
-            border: 2px solid var(--primary-purple);
-            border-radius: 30px;
-            color: var(--text-light);
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 1rem;
-        }
-
-        .event-btn:hover {
-            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
+        .discord-btn:hover {
             transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(123, 104, 238, 0.4);
         }
 
-        .event-btn.active {
-            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
-        }
-
-        /* Results Section */
-        .results-content {
-            padding: 2rem 0 4rem;
-        }
-
-        .event-results {
+        /* Mobile menu */
+        .mobile-menu-toggle {
             display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
         }
 
-        .event-results.active {
-            display: block;
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-light);
+            transition: all 0.3s;
         }
 
-        .event-header {
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: radial-gradient(circle at 50% 50%, rgba(123, 104, 238, 0.1) 0%, transparent 50%);
+            margin-top: -80px;
+            padding-top: 80px;
+        }
+
+        .hero-content {
             text-align: center;
-            margin-bottom: 3rem;
+            z-index: 2;
+            padding: 2rem;
         }
 
-        .event-header h2 {
-            font-size: 2.5rem;
+        .logo-container {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 2rem;
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .logo-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
             background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            font-weight: 900;
+            letter-spacing: -2px;
+        }
+
+        .hero .date {
+            font-size: 1.8rem;
+            color: var(--text-muted);
             margin-bottom: 0.5rem;
         }
 
-        .event-date {
-            color: var(--text-muted);
+        .hero .location {
             font-size: 1.2rem;
-        }
-
-        /* Tournament Results */
-        .tournament-section {
-            margin-bottom: 3rem;
-        }
-
-        .tournament-header {
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(0, 61, 130, 0.1));
-            padding: 1.5rem;
-            border-radius: 15px 15px 0 0;
-            margin-bottom: 0;
-        }
-
-        .tournament-header h3 {
-            font-size: 1.8rem;
-            color: var(--text-light);
-        }
-
-        .podium {
-            background: var(--darker-bg);
-            padding: 2rem;
-            border-radius: 0 0 15px 15px;
+            color: var(--text-muted);
             margin-bottom: 2rem;
         }
 
-        .place {
+        .hero-cta {
             display: flex;
-            align-items: center;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.05), rgba(0, 61, 130, 0.05));
-            border-radius: 10px;
-            border: 1px solid rgba(123, 104, 238, 0.2);
-        }
-
-        .place-number {
-            font-size: 2rem;
-            font-weight: bold;
-            width: 60px;
-            text-align: center;
-            margin-right: 1rem;
-        }
-
-        .gold { color: #FFD700; }
-        .silver { color: #C0C0C0; }
-        .bronze { color: #CD7F32; }
-
-        .player-name, .team-name {
-            font-size: 1.2rem;
-            flex: 1;
-        }
-
-        .prize {
-            color: var(--text-muted);
-        }
-
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
+            gap: 1rem;
+            justify-content: center;
             margin-top: 2rem;
         }
 
-        .stat-box {
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(0, 61, 130, 0.1));
-            padding: 1.5rem;
-            border-radius: 15px;
-            text-align: center;
-            border: 1px solid rgba(123, 104, 238, 0.2);
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: inline-block;
         }
 
-        .stat-value {
-            font-size: 2rem;
+        .btn-primary {
+            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(123, 104, 238, 0.4);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--primary-purple);
+            color: var(--primary-purple);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-purple);
+            color: white;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Event Overview */
+        .overview {
+            background: var(--darker-bg);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(0, 61, 130, 0.1));
+            border: 1px solid rgba(123, 104, 238, 0.2);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-purple);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
             font-weight: bold;
             background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
             -webkit-background-clip: text;
@@ -257,67 +284,257 @@
             margin-top: 0.5rem;
         }
 
-        /* Links Section */
-        .event-links {
-            margin-top: 2rem;
-            padding: 1.5rem;
+        /* Tournaments */
+        .tournaments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .tournament-card {
             background: linear-gradient(135deg, rgba(123, 104, 238, 0.05), rgba(0, 61, 130, 0.05));
+            border: 1px solid rgba(123, 104, 238, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tournament-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
+        }
+
+        .tournament-card.ctf::before {
+            background: var(--accent-cyan);
+        }
+
+        .tournament-card.duel::before {
+            background: var(--accent-orange);
+        }
+
+        .tournament-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tournament-info {
+            margin: 1rem 0;
+            color: var(--text-muted);
+        }
+
+        .prize {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-top: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Venue */
+        .venue {
+            background: var(--darker-bg);
+        }
+
+        .venue-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .venue-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-purple);
+        }
+
+        .venue-info p {
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+
+        .venue-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .venue-features li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+        }
+
+        .venue-features li::before {
+            content: "▸ ";
+            color: var(--primary-purple);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .venue-image {
+            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(0, 61, 130, 0.1));
+            border: 1px solid rgba(123, 104, 238, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Legacy */
+        .legacy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .legacy-card {
+            background: linear-gradient(135deg, rgba(123, 104, 238, 0.05), rgba(0, 61, 130, 0.05));
+            border: 1px solid rgba(123, 104, 238, 0.2);
             border-radius: 15px;
+            padding: 2rem;
             text-align: center;
         }
 
-        .event-links h4 {
+        .legacy-card h3 {
             color: var(--primary-purple);
             margin-bottom: 1rem;
         }
 
-        .link-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
+        .champions-list {
+            list-style: none;
+            margin-top: 1rem;
         }
 
-        .link-btn {
-            padding: 0.75rem 1.5rem;
-            background: rgba(123, 104, 238, 0.2);
-            color: var(--text-light);
-            text-decoration: none;
-            border-radius: 25px;
-            transition: all 0.3s;
-            border: 1px solid var(--primary-purple);
+        .champions-list li {
+            padding: 0.5rem 0;
+            color: var(--text-muted);
         }
 
-        .link-btn:hover {
-            background: var(--primary-purple);
-            transform: translateY(-2px);
-        }
-
-        /* Full Results Table */
-        .full-results {
-            margin-top: 2rem;
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            padding: 0.75rem;
-            text-align: left;
-            border-bottom: 1px solid rgba(123, 104, 238, 0.2);
-        }
-
-        th {
+        .testimonial {
             background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(0, 61, 130, 0.1));
+            border-left: 4px solid var(--primary-purple);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .testimonial p {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text-light);
+        }
+
+        .testimonial-author {
+            text-align: right;
             color: var(--primary-purple);
+            margin-top: 1rem;
+        }
+
+        /* Sponsors */
+        .sponsors {
+            background: var(--darker-bg);
+        }
+
+        .sponsors-current {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .sponsor-main {
+            display: inline-block;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(0, 61, 130, 0.1));
+            border: 1px solid rgba(123, 104, 238, 0.2);
+            border-radius: 15px;
+            margin: 1rem;
+        }
+
+        .sponsors-previous {
+            margin-top: 3rem;
+        }
+
+        .sponsors-previous h3 {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .sponsors-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .sponsor-item {
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            color: var(--text-muted);
+        }
+
+        .sponsor-cta {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(123, 104, 238, 0.05), rgba(0, 61, 130, 0.05));
+            border-radius: 20px;
+        }
+
+        .sponsor-cta h3 {
+            color: var(--primary-purple);
+            margin-bottom: 1rem;
+        }
+
+        /* How to Participate */
+        .participate {
+            text-align: center;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .step {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(123, 104, 238, 0.05), rgba(0, 61, 130, 0.05));
+            border: 1px solid rgba(123, 104, 238, 0.2);
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: bold;
         }
 
-        tr:hover {
-            background: rgba(123, 104, 238, 0.05);
+        .step h3 {
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-purple);
         }
 
         /* Footer */
@@ -325,275 +542,678 @@
             background: var(--darker-bg);
             padding: 3rem 2rem 2rem;
             border-top: 1px solid rgba(123, 104, 238, 0.2);
-            margin-top: 4rem;
         }
 
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
-            text-align: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
 
-        .footer-content a {
+        .footer-section h3 {
             color: var(--primary-purple);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: var(--text-muted);
             text-decoration: none;
-            margin: 0 1rem;
+            display: block;
+            padding: 0.25rem 0;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-purple);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(123, 104, 238, 0.1);
+            color: var(--text-muted);
+        }
+
+        /* Particles Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(123, 104, 238, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: particle-float 20s infinite linear;
+        }
+
+        @keyframes particle-float {
+            from {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.4;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            to {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .page-header h1 {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 60px);
+                background: var(--dark-bg);
+                flex-direction: column;
+                padding: 2rem;
+                transition: left 0.3s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .date {
+                font-size: 1.3rem;
+            }
+
+            .tournaments-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .venue-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            h2 {
                 font-size: 2rem;
             }
 
-            .event-header h2 {
-                font-size: 1.8rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
+            .logo-container {
+                width: 200px;
+                height: 200px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Particle Effects -->
+    <div class="particles" id="particles"></div>
+
     <!-- Navigation -->
-    <nav>
+    <nav id="navbar">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">QL CITY LAN SERIES</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#events">Events</a></li>
-                <li><a href="results.html" style="color: var(--primary-purple);">Results</a></li>
+            <a href="#" class="nav-logo">QL CITY LAN SERIES</a>
+            <div class="mobile-menu-toggle" id="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#events">Events</a></li>
+                <li><a href="#venue">Venue</a></li>
+                <li><a href="#register">Register</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#sponsors">Sponsors</a></li>
                 <li><a href="https://discord.gg/u8Ttp8frqU" class="discord-btn" target="_blank">Join Discord</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Header -->
-    <div class="page-header">
-        <h1>Tournament Results</h1>
-        <p style="color: var(--text-muted); font-size: 1.2rem;">Complete results from all QL City LAN Series events</p>
-    </div>
-
-    <!-- Event Selector -->
-    <div class="container">
-        <div class="event-selector">
-            <button class="event-btn active" onclick="showEvent('stuttgart2025')">Stuttgart 2025</button>
-            <button class="event-btn" onclick="showEvent('prague2024')">Prague 2024</button>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="logo-container">
+                <img src="stuttgart-2026.png" alt="QL City LAN Series Stuttgart 2026" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <h1>STUTTGART '26</h1>
+            <div class="date">March 19-22, 2026</div>
+            <div class="location">1337 Camp Gaming House, Waiblingen</div>
+            <div class="hero-cta">
+                <a href="https://discord.gg/u8Ttp8frqU" class="btn-primary" target="_blank">Join Discord to Register</a>
+                <a href="#events" class="btn-secondary">Learn More</a>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Results Content -->
-    <div class="container results-content">
-        
-        <!-- Stuttgart 2025 Results -->
-        <div id="stuttgart2025" class="event-results active">
-            <div class="event-header">
-                <h2>Stuttgart 2025</h2>
-                <p class="event-date">June 20-22, 2025</p>
-            </div>
-
-            <!-- CTF Tournament -->
-            <div class="tournament-section">
-                <div class="tournament-header">
-                    <h3>CTF Tournament</h3>
-                </div>
-                <div class="podium">
-                    <div class="place">
-                        <span class="place-number gold">🥇</span>
-                        <span class="team-name">WALLSNACKERS<br><small>Mastermind, ioRek, Wallsnag, Janti, Fizzy</small></span>
-                        <span class="prize">€500 + Artisan pads</span>
-                    </div>
-                    <div class="place">
-                        <span class="place-number silver">🥈</span>
-                        <span class="team-name">Local Arena Nerds<br><small>jcb, vulTure, stripy, re4, Rohm</small></span>
-                        <span class="prize">€250 + Artisan pads</span>
-                    </div>
-                    <div class="place">
-                        <span class="place-number bronze">🥉</span>
-                        <span class="team-name">Bratwurst & Pierogi<br><small>Lihensior, dehumanizeR, Osnart, luminus, TK</small></span>
-                        <span class="prize">€100 + Artisan pads</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Duel Tournament -->
-            <div class="tournament-section">
-                <div class="tournament-header">
-                    <h3>Duel Tournament</h3>
-                </div>
-                <div class="podium">
-                    <div class="place">
-                        <span class="place-number gold">🥇</span>
-                        <span class="player-name">dem0n</span>
-                        <span class="prize">€120 + Artisan pads</span>
-                    </div>
-                    <div class="place">
-                        <span class="place-number silver">🥈</span>
-                        <span class="player-name">yarrr</span>
-                        <span class="prize">€60 + Artisan pad</span>
-                    </div>
-                    <div class="place">
-                        <span class="place-number bronze">🥉</span>
-                        <span class="player-name">lumi</span>
-                        <span class="prize">€30</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Event Stats -->
+    <!-- Events Section (combined Event Overview and Tournaments) -->
+    <section class="overview" id="events">
+        <div class="container">
+            <h2>Events</h2>
+            
+            <!-- Quick Stats -->
             <div class="stats-grid">
-                <div class="stat-box">
-                    <div class="stat-value">40</div>
-                    <div class="stat-label">Total Players</div>
+                <div class="stat-card">
+                    <div class="stat-number">70</div>
+                    <div class="stat-label">Players from across Europe</div>
                 </div>
-                <div class="stat-box">
-                    <div class="stat-value">6</div>
-                    <div class="stat-label">CTF Teams</div>
+                <div class="stat-card">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Tournaments (CTF & Duel)</div>
                 </div>
-                <div class="stat-box">
-                    <div class="stat-value">18</div>
-                    <div class="stat-label">Duel Players</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value">€850</div>
+                <div class="stat-card">
+                    <div class="stat-number">€1000+</div>
                     <div class="stat-label">Total Prize Pool</div>
                 </div>
-            </div>
-
-            <!-- Links -->
-            <div class="event-links">
-                <h4>More Information</h4>
-                <div class="link-buttons">
-                    <a href="https://www.esreality.com/" class="link-btn" target="_blank">ESReality Thread</a>
-                    <a href="https://challonge.com/QLCLAN2CTF" class="link-btn" target="_blank">CTF Brackets</a>
-                    <a href="https://challonge.com/QLCLAN2DUEL" class="link-btn" target="_blank">Duel Brackets</a>
-                    <a href="#" class="link-btn">Download Demos</a>
+                <div class="stat-card">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Days of Competition</div>
                 </div>
             </div>
-        </div>
-
-        <!-- Prague 2024 Results -->
-        <div id="prague2024" class="event-results">
-            <div class="event-header">
-                <h2>Prague 2024</h2>
-                <p class="event-date">March 22-24, 2024</p>
-            </div>
-
-            <!-- CTF Tournament -->
-            <div class="tournament-section">
-                <div class="tournament-header">
+            
+            <!-- Tournament Details -->
+            <h3 style="text-align: center; margin: 3rem 0 2rem; color: var(--text-light); font-size: 1.8rem;">Tournament Details</h3>
+            <div class="tournaments-grid">
+                <div class="tournament-card ctf">
                     <h3>CTF Tournament</h3>
-                </div>
-                <div class="podium">
-                    <div class="place">
-                        <span class="place-number gold">🥇</span>
-                        <span class="team-name">Team ion<br><small>ion, PYTON, Chet0!!, Manty, l0l04</small></span>
-                        <span class="prize">€300 + Artisan pads</span>
+                    <div class="tournament-info">
+                        <p><strong>Format:</strong> 5v5 Team Draft</p>
+                        <p><strong>Dates:</strong> March 20-21, 2026</p>
+                        <p><strong>Teams:</strong> 6-8 teams expected</p>
                     </div>
-                    <div class="place">
-                        <span class="place-number silver">🥈</span>
-                        <span class="team-name">Team rasharn<br><small>rasharn, knz, re4, 10eloguy, Nekvic</small></span>
-                        <span class="prize">€150 + Artisan pads</span>
-                    </div>
-                    <div class="place">
-                        <span class="place-number bronze">🥉</span>
-                        <span class="team-name">Team Mastermind<br><small>MASTERMIND, Krysa, Brejk, fizzy, rindo</small></span>
-                        <span class="prize">€50 + Artisan pads</span>
+                    <div class="prize">
+                        <p>Prize Pool: €850</p>
+                        <p>+ Artisan mousepads for top 3 teams</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- Duel Tournament -->
-            <div class="tournament-section">
-                <div class="tournament-header">
+                <div class="tournament-card duel">
                     <h3>Duel Tournament</h3>
-                </div>
-                <div class="podium">
-                    <div class="place">
-                        <span class="place-number gold">🥇</span>
-                        <span class="player-name">iceman</span>
-                        <span class="prize">€150 + Artisan pads + ROG peripherals</span>
+                    <div class="tournament-info">
+                        <p><strong>Format:</strong> Swiss → Single Elimination</p>
+                        <p><strong>Dates:</strong> March 19-20, 2026</p>
+                        <p><strong>Players:</strong> Open registration</p>
                     </div>
-                    <div class="place">
-                        <span class="place-number silver">🥈</span>
-                        <span class="player-name">Forsty</span>
-                        <span class="prize">€100 + Artisan pads</span>
-                    </div>
-                    <div class="place">
-                        <span class="place-number bronze">🥉</span>
-                        <span class="player-name">Tyfoon</span>
-                        <span class="prize">€50 + Artisan pad</span>
+                    <div class="prize">
+                        <p>Prize Pool: €210</p>
+                        <p>+ Artisan mousepads for top 3</p>
                     </div>
                 </div>
             </div>
-
-            <!-- Event Stats -->
-            <div class="stats-grid">
-                <div class="stat-box">
-                    <div class="stat-value">40</div>
-                    <div class="stat-label">Total Players</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value">7</div>
-                    <div class="stat-label">CTF Teams</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value">25</div>
-                    <div class="stat-label">Duel Players</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value">€800</div>
-                    <div class="stat-label">Total Prize Pool</div>
-                </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="https://discord.gg/u8Ttp8frqU" class="btn-primary" target="_blank">Register on Discord</a>
             </div>
+        </div>
+    </section>
 
-            <!-- Links -->
-            <div class="event-links">
-                <h4>More Information</h4>
-                <div class="link-buttons">
-                    <a href="https://www.esreality.com/" class="link-btn" target="_blank">ESReality Thread</a>
-                    <a href="https://challonge.com/n8jzyjnx" class="link-btn" target="_blank">CTF Brackets</a>
-                    <a href="https://challonge.com/CTFPragueLan" class="link-btn" target="_blank">Duel Brackets</a>
-                    <a href="#" class="link-btn">Photos by Jocko</a>
-                    <a href="#" class="link-btn">Videos by dehumanizeR</a>
+    <!-- Venue -->
+    <section class="venue" id="venue">
+        <div class="container">
+            <h2>Venue</h2>
+            <div class="venue-content">
+                <div class="venue-info">
+                    <h3>1337 Camp Gaming House</h3>
+                    <p>Professional esports facility in the heart of Stuttgart region</p>
+                    <p><strong>Address:</strong> Maybachstraße 24, 71332 Waiblingen</p>
+                    
+                    <ul class="venue-features">
+                        <li>AMD Ryzen 7 5700X processors</li>
+                        <li>NVIDIA RTX 3060Ti graphics cards</li>
+                        <li>240Hz BenQ Zowie monitors</li>
+                        <li>On-site accommodation available</li>
+                        <li>Kitchen and lounge areas</li>
+                        <li>Dedicated tournament space</li>
+                    </ul>
+                    
+                    <a href="https://discord.gg/u8Ttp8frqU" class="btn-secondary" target="_blank">Room Details on Discord</a>
+                </div>
+                <div class="venue-image">
+                    <img src="assets/venue-1337camp.jpg" alt="1337 Camp Gaming House" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<div><p style=\'font-size: 3rem; margin-bottom: 1rem;\'>🏢</p><p>Professional Gaming Venue</p><p style=\'color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;\'>Single, double, and group rooms available</p></div>');">
                 </div>
             </div>
         </div>
+    </section>
 
-    </div>
+    <!-- Legacy -->
+    <section class="legacy" id="legacy">
+        <div class="container">
+            <h2>Why Attend?</h2>
+            
+            <div class="legacy-grid">
+                <div class="legacy-card">
+                    <h3>Stuttgart 2025</h3>
+                    <p>2nd Edition - June 2025</p>
+                    <ul class="champions-list">
+                        <li>🏆 CTF: WALLSNACKERS</li>
+                        <li>🏆 Duel: dem0n</li>
+                        <li>40 participants</li>
+                    </ul>
+                </div>
+                <div class="legacy-card">
+                    <h3>Prague 2024</h3>
+                    <p>1st Edition - March 2024</p>
+                    <ul class="champions-list">
+                        <li>🏆 CTF: Team ion</li>
+                        <li>🏆 Duel: iceman</li>
+                        <li>40 participants</li>
+                    </ul>
+                </div>
+                <div class="legacy-card">
+                    <h3>Stuttgart 2026</h3>
+                    <p>3rd Edition - Be Part of History!</p>
+                    <ul class="champions-list">
+                        <li>📍 Bigger venue</li>
+                        <li>🎮 70 player capacity</li>
+                        <li>🏆 Your name here?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                <p>"Organized by players, for players. The QL City LAN Series brings together the European Quake Live community for an unforgettable weekend of competition and camaraderie."</p>
+                <div class="testimonial-author">— The Organizers</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsors -->
+    <section class="sponsors" id="sponsors">
+        <div class="container">
+            <h2>Sponsors</h2>
+            
+            <div class="sponsors-current">
+                <h3 style="color: var(--text-light); margin-bottom: 2rem;">Current Sponsors</h3>
+                <div class="sponsor-main">
+                    <!-- Replace with actual Artisan logo path -->
+                    <img src="assets/artisan-logo.png" alt="Artisan" style="max-width: 200px; height: auto;" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<div style=\'font-family: Arial, sans-serif; font-size: 2rem; font-weight: 300; letter-spacing: 2px;\'>ARTISAN</div>');">
+                    <p style="color: var(--text-muted); margin-top: 0.5rem;">Premium Gaming Mousepads</p>
+                </div>
+                <p style="color: var(--text-muted); margin-top: 2rem;">More sponsors to be announced</p>
+            </div>
+            
+            <div class="sponsors-previous">
+                <h3>Previous Event Sponsors</h3>
+                <div class="sponsors-grid">
+                    <div class="sponsor-item">
+                        <img src="assets/surfshark-logo.png" alt="Surfshark" style="max-width: 150px; height: 50px; object-fit: contain;" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<div style=\'font-weight: bold;\'>Surfshark</div>');">
+                    </div>
+                    <div class="sponsor-item">
+                        <img src="assets/asus-rog-logo.png" alt="ASUS ROG" style="max-width: 150px; height: 50px; object-fit: contain;" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<div style=\'font-weight: bold;\'>ASUS ROG</div>');">
+                    </div>
+                    <div class="sponsor-item">
+                        <img src="assets/starobrno-logo.png" alt="Starobrno" style="max-width: 150px; height: 50px; object-fit: contain;" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<div style=\'font-weight: bold;\'>Starobrno</div>');">
+                    </div>
+                    <div class="sponsor-item">
+                        <img src="assets/zichovec-logo.png" alt="Zichovec" style="max-width: 150px; height: 50px; object-fit: contain;" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<div style=\'font-weight: bold;\'>Zichovec</div>');">
+                    </div>
+                    <div class="sponsor-item">
+                        <img src="assets/dullik-logo.png" alt="Dullik" style="max-width: 150px; height: 50px; object-fit: contain;" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<div style=\'font-weight: bold;\'>Dullik</div>');">
+                    </div>
+                    <div class="sponsor-item">
+                        <img src="assets/quakepub-logo.png" alt="Quake Pub" style="max-width: 150px; height: 50px; object-fit: contain;" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<div style=\'font-weight: bold;\'>Quake Pub</div>');">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sponsor-cta">
+                <h3>Become a Sponsor</h3>
+                <p>Support the European Quake Live community and showcase your brand to dedicated esports enthusiasts</p>
+                <a href="#" onclick="window.location.href='mailto:' + 'info' + '@' + 'citylanseries.com'; return false;" class="btn-primary" style="margin-top: 1rem;">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form Section -->
+    <section class="register" id="register">
+        <div class="container">
+            <h2>Register for Stuttgart '26</h2>
+            
+            <div class="registration-form-container" style="max-width: 600px; margin: 0 auto;">
+                <p style="text-align: center; margin-bottom: 2rem; color: var(--text-muted);">
+                    Fill out the form below to register. You'll receive confirmation and payment details via email.
+                </p>
+                
+                <!-- Form connected to Formspree -->
+                <form action="https://formspree.io/f/mvgwaloj" method="POST" style="background: linear-gradient(135deg, rgba(123, 104, 238, 0.05), rgba(0, 61, 130, 0.05)); padding: 2rem; border-radius: 20px; border: 1px solid rgba(123, 104, 238, 0.2);">
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="ingame-name" style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">In-Game Name *</label>
+                        <input type="text" id="ingame-name" name="ingame_name" required style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white;">
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="email" style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">Email *</label>
+                        <input type="email" id="email" name="email" required style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white;">
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="room-type" style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">Preferred Room Type *</label>
+                        <select id="room-type" name="room_type" required style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white; background-color: var(--dark-bg);">
+                            <option value="">Select room type</option>
+                            <option value="single">Single (€360 + €30)</option>
+                            <option value="double">Double (€290 + €30)</option>
+                            <option value="triple">Triple (€255 + €30)</option>
+                            <option value="5-person">5-Person (€255 + €30)</option>
+                            <option value="7-person">7-Person (€255 + €30)</option>
+                            <option value="pc-only">PC Rent Only (€150 + €30)</option>
+                        </select>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="roommates" style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">Preferred Roommates (for group rooms)</label>
+                        <input type="text" id="roommates" name="roommates" placeholder="Leave blank for single room" style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white;">
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="shirt-size" style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">T-Shirt Size *</label>
+                        <select id="shirt-size" name="shirt_size" required style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white; background-color: var(--dark-bg);">
+                            <option value="">Select size</option>
+                            <option value="XS">XS</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option>
+                            <option value="XXXL">XXXL</option>
+                        </select>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">For Shirt Design</label>
+                        <input type="text" name="player_model" placeholder="Player model (Doom, Sarge, etc.)" style="width: 100%; padding: 0.75rem; margin-bottom: 0.5rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white;">
+                        <input type="text" name="country" placeholder="Country" style="width: 100%; padding: 0.75rem; margin-bottom: 0.5rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white;">
+                        <input type="text" name="favorite_weapon" placeholder="Favorite weapon" style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white;">
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">Which events will you play? *</label>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="checkbox" name="events" value="CTF" style="margin-right: 0.5rem;">
+                                <span>CTF Tournament</span>
+                            </label>
+                            <label style="display: flex; align-items: center; cursor: pointer;">
+                                <input type="checkbox" name="events" value="Duel" style="margin-right: 0.5rem;">
+                                <span>Duel Tournament</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">Photo/Video Consent *</label>
+                        <select name="media_consent" required style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white; background-color: var(--dark-bg);">
+                            <option value="">Select option</option>
+                            <option value="yes">YES - I agree to photos/videos being shared</option>
+                            <option value="no">NO - I don't want to appear in shared media</option>
+                        </select>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="comments" style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">Additional Comments</label>
+                        <textarea id="comments" name="comments" rows="3" style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white; resize: vertical;"></textarea>
+                    </div>
+                    
+                    <button type="submit" style="width: 100%; padding: 1rem; background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue)); color: white; border: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s;">
+                        Submit Registration
+                    </button>
+                </form>
+                
+                <p style="text-align: center; margin-top: 2rem; color: var(--text-muted); font-size: 0.9rem;">
+                    Registrations are processed on a first-come, first-served basis. Organizers reserve the right to accept or decline registrations.
+                </p>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <p style="margin-bottom: 1rem;">Need help or have questions?</p>
+                    <a href="https://discord.gg/u8Ttp8frqU" class="btn-secondary" target="_blank">Join Discord for Support</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq" style="background: var(--darker-bg);">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-grid" style="max-width: 900px; margin: 0 auto;">
+                <div class="faq-item" style="margin-bottom: 2rem;">
+                    <h3 style="color: var(--primary-purple); margin-bottom: 0.5rem;">When is the event?</h3>
+                    <p style="color: var(--text-muted);">March 19-22, 2026 at 1337 Camp Gaming House in Waiblingen (near Stuttgart).</p>
+                </div>
+                
+                <div class="faq-item" style="margin-bottom: 2rem;">
+                    <h3 style="color: var(--primary-purple); margin-bottom: 0.5rem;">What equipment is provided?</h3>
+                    <p style="color: var(--text-muted);">High-end PCs with AMD Ryzen 7 5700X, NVIDIA RTX 3060Ti, and 240Hz BenQ Zowie monitors. Preferably bring your own peripherals (mouse, keyboard, headset).</p>
+                </div>
+                
+                <div class="faq-item" style="margin-bottom: 2rem;">
+                    <h3 style="color: var(--primary-purple); margin-bottom: 0.5rem;">Where can I find the rules?</h3>
+                    <p style="color: var(--text-muted);">For the latest rules (formats, maps, pick/ban, any changes), please check our Discord #rules channel: <a href="https://discord.gg/u8Ttp8frqU" target="_blank" style="color: var(--primary-purple);">discord.gg/u8Ttp8frqU</a></p>
+                </div>
+                
+                <div class="faq-item" style="margin-bottom: 2rem;">
+                    <h3 style="color: var(--primary-purple); margin-bottom: 0.5rem;">Do I need a team for CTF?</h3>
+                    <p style="color: var(--text-muted);">No—CTF uses a draft system to balance teams. Captains will pick players on the day.</p>
+                </div>
+                
+                <div class="faq-item" style="margin-bottom: 2rem;">
+                    <h3 style="color: var(--primary-purple); margin-bottom: 0.5rem;">What's the minimum age?</h3>
+                    <p style="color: var(--text-muted);">16+ (under 18 may need guardian consent depending on venue policy).</p>
+                </div>
+                
+                <div class="faq-item" style="margin-bottom: 2rem;">
+                    <h3 style="color: var(--primary-purple); margin-bottom: 0.5rem;">Where do I sign up?</h3>
+                    <p style="color: var(--text-muted);">Use the registration form on the <a href="#register" style="color: var(--primary-purple);">Register</a> page. Status updates will be posted in Discord.</p>
+                </div>
+                
+                <div class="faq-item" style="margin-bottom: 2rem;">
+                    <h3 style="color: var(--primary-purple); margin-bottom: 0.5rem;">Can I attend without playing?</h3>
+                    <p style="color: var(--text-muted);">There is a possibility for spectators. For details, check our <a href="https://discord.gg/u8Ttp8frqU" target="_blank" style="color: var(--primary-purple);">Discord</a>.</p>
+                </div>
+                
+                <div class="faq-item" style="margin-bottom: 2rem;">
+                    <h3 style="color: var(--primary-purple); margin-bottom: 0.5rem;">Is accommodation included?</h3>
+                    <p style="color: var(--text-muted);">Accommodation is available on-site at 1337 Camp with various room options. Book early as space is limited!</p>
+                </div>
+                
+                <div class="faq-item" style="margin-bottom: 2rem;">
+                    <h3 style="color: var(--primary-purple); margin-bottom: 0.5rem;">What's the skill level requirement?</h3>
+                    <p style="color: var(--text-muted);">Join Discord to find out details. For CTF there is a minimal threshold of knowledge and experience needed. All skill levels are welcome for Duel!</p>
+                </div>
+                
+                <div class="faq-item" style="margin-bottom: 2rem;">
+                    <h3 style="color: var(--primary-purple); margin-bottom: 0.5rem;">Will there be streaming/VODs?</h3>
+                    <p style="color: var(--text-muted);">Selected matches may be streamed on <a href="https://www.twitch.tv/qllancityseries" target="_blank" style="color: var(--primary-purple);">twitch.tv/qllancityseries</a>. Links will be posted in Discord.</p>
+                </div>
+                
+                <div class="faq-item" style="margin-bottom: 2rem;">
+                    <h3 style="color: var(--primary-purple); margin-bottom: 0.5rem;">What about food and drinks?</h3>
+                    <p style="color: var(--text-muted);">1337 Camp has a kitchen and lounge area. There are also restaurants and shops nearby.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, rgba(123, 104, 238, 0.05), rgba(0, 61, 130, 0.05)); border-radius: 20px;">
+                <h3 style="color: var(--primary-purple); margin-bottom: 1rem;">Have More Questions?</h3>
+                <p style="margin-bottom: 1.5rem;">Join our Discord community for instant answers and updates!</p>
+                <a href="https://discord.gg/u8Ttp8frqU" class="btn-primary" target="_blank">Join Discord Community</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Participate -->
+    <section class="participate" id="participate">
+        <div class="container">
+            <h2>How to Participate</h2>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Join Discord</h3>
+                    <p>Join our official Discord server for all event information and updates</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Read Info</h3>
+                    <p>Check the pinned messages for detailed rules, schedules, and requirements</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Register</h3>
+                    <p>Send your registration email with all required information</p>
+                </div>
+            </div>
+            
+            <a href="https://discord.gg/u8Ttp8frqU" class="btn-primary" target="_blank" style="font-size: 1.2rem; padding: 1.2rem 3rem;">Join Discord Now</a>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p>© 2026 QL City LAN Series</p>
-            <p style="margin-top: 1rem;">
-                <a href="index.html">Home</a>
-                <a href="https://discord.gg/u8Ttp8frqU" target="_blank">Discord</a>
-                <a href="http://141.95.52.28:5000/" target="_blank">Full Stats</a>
-            </p>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <a href="#" onclick="window.location.href='mailto:' + 'info' + '@' + 'citylanseries.com'; return false;">info[at]citylanseries[dot]com</a>
+                <a href="https://discord.gg/u8Ttp8frqU" target="_blank">Discord Server</a>
+            </div>
+            <div class="footer-section">
+                <h3>Links</h3>
+                <a href="https://www.twitch.tv/qllancityseries" target="_blank">Twitch Stream</a>
+                <a href="https://ko-fi.com/lanst2025" target="_blank">Support Us</a>
+                <a href="https://discord.gg/u8Ttp8frqU" target="_blank">Tournament Info</a>
+            </div>
+            <div class="footer-section">
+                <h3>Event</h3>
+                <p style="color: var(--text-muted);">March 19-22, 2026</p>
+                <p style="color: var(--text-muted);">1337 Camp Gaming House</p>
+                <p style="color: var(--text-muted);">Waiblingen, Germany</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 QL City LAN Series. Organized by players, for players.</p>
         </div>
     </footer>
 
     <script>
-        function showEvent(eventId) {
-            // Hide all events
-            document.querySelectorAll('.event-results').forEach(event => {
-                event.classList.remove('active');
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenu.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                }
             });
+        });
+
+        // Generate particle effects
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = window.innerWidth > 768 ? 15 : 8;
             
-            // Remove active class from all buttons
-            document.querySelectorAll('.event-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Show selected event
-            document.getElementById(eventId).classList.add('active');
-            
-            // Add active class to clicked button
-            event.target.classList.add('active');
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random size
+                const size = Math.random() * 60 + 20;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                // Random position
+                particle.style.left = Math.random() * 100 + '%';
+                
+                // Random animation delay
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                
+                // Random animation duration
+                particle.style.animationDuration = (Math.random() * 20 + 20) + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
         }
+        
+        createParticles();
+
+        // Countdown timer (optional - you can remove this if you want completely static)
+        function updateCountdown() {
+            const eventDate = new Date('March 19, 2026 00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            
+            // You could display this somewhere if you want
+            // For now, just logging it
+            console.log(`${days} days until QL City LAN Stuttgart '26`);
+        }
+        
+        updateCountdown();
+        
+        // Add some entrance animations when scrolling
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
     </script>
 </body>
 </html>
