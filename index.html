@@ -197,14 +197,27 @@
             margin-top: 2rem;
         }
 
-        .btn-primary, .btn-secondary {
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s;
-            display: inline-block;
-        }
+        .btn-primary, .btn-secondary, .btn-register {
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s;
+  display: inline-block;
+}
+        /* Register button (different color) */
+.btn-register{
+  background: linear-gradient(90deg, #1abc9c, #16a085); /* teal */
+  color:#fff;
+}
+.btn-register:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(26,188,156,.35);
+}
+
+/* nice jump when you have a fixed header */
+#register{ scroll-margin-top: 90px; }
+
 
         .btn-primary {
             background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
@@ -762,7 +775,7 @@
             </div>
             
             <div style="text-align: center; margin-top: 3rem;">
-               <a href="#register" class="btn btn-register">Register</a>
+               <a href="#register" class="btn-register">Register Now</a>
             </div>
         </div>
     </section>
