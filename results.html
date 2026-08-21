@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Results - QL City LAN Series</title>
-    <meta name="description" content="Tournament results and statistics from all QL City LAN Series events. Prague 2024, Stuttgart 2025 results.">
+    <meta name="description" content="Tournament results and statistics from all QL City LAN Series events. Stuttgart 2026, Stuttgart 2025 and Prague 2024 results.">
     
     <style>
         * {
@@ -293,6 +293,14 @@
             transform: translateY(-2px);
         }
 
+        /* Placeholder for links we do not have yet */
+        .link-btn.pending {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px dashed rgba(123, 104, 238, 0.5);
+            color: var(--text-muted);
+            cursor: default;
+        }
+
         /* Full Results Table */
         .full-results {
             margin-top: 2rem;
@@ -379,16 +387,106 @@
     <!-- Event Selector -->
     <div class="container">
         <div class="event-selector">
-            <button class="event-btn active" onclick="showEvent('stuttgart2025')">Stuttgart 2025</button>
-            <button class="event-btn" onclick="showEvent('prague2024')">Prague 2024</button>
+            <button class="event-btn active" onclick="showEvent(event, 'stuttgart2026')">Stuttgart 2026</button>
+            <button class="event-btn" onclick="showEvent(event, 'stuttgart2025')">Stuttgart 2025</button>
+            <button class="event-btn" onclick="showEvent(event, 'prague2024')">Prague 2024</button>
         </div>
     </div>
 
     <!-- Results Content -->
     <div class="container results-content">
         
+        <!-- Stuttgart 2026 Results -->
+        <div id="stuttgart2026" class="event-results active">
+            <div class="event-header">
+                <h2>Stuttgart 2026</h2>
+                <p class="event-date">March 19-22, 2026</p>
+            </div>
+
+            <!-- CTF Tournament -->
+            <div class="tournament-section">
+                <div class="tournament-header">
+                    <h3>CTF Tournament</h3>
+                </div>
+                <div class="podium">
+                    <div class="place">
+                        <span class="place-number gold">🥇</span>
+                        <span class="team-name">Rapid Escape Division<br><small>jcb, PYTON, Manty, Needy, Wallsnag</small></span>
+                        <span class="prize">€600 + 3 Artisan pads of choice per player</span>
+                    </div>
+                    <div class="place">
+                        <span class="place-number silver">🥈</span>
+                        <span class="team-name">BiWinning<br><small>SPART1E, Lumi, Janti, Knetic, Grandbolus</small></span>
+                        <span class="prize">€300 + 2 Artisan pads per player</span>
+                    </div>
+                    <div class="place">
+                        <span class="place-number bronze">🥉</span>
+                        <span class="team-name">FlagOuted<br><small>d1, ioRek, ani, Osnart, Fizzy</small></span>
+                        <span class="prize">€100 + 1 Artisan pad per player</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Duel Tournament -->
+            <div class="tournament-section">
+                <div class="tournament-header">
+                    <h3>Duel Tournament</h3>
+                </div>
+                <div class="podium">
+                    <div class="place">
+                        <span class="place-number gold">🥇</span>
+                        <span class="player-name">Needy</span>
+                        <span class="prize">€280 + 2 Artisan pads of choice</span>
+                    </div>
+                    <div class="place">
+                        <span class="place-number silver">🥈</span>
+                        <span class="player-name">yarrr</span>
+                        <span class="prize">€140 + 1 Artisan pad</span>
+                    </div>
+                    <div class="place">
+                        <span class="place-number bronze">🥉</span>
+                        <span class="player-name">dem0n</span>
+                        <span class="prize">€80 + 1 Artisan pad</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Stats -->
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-value">TBA</div>
+                    <div class="stat-label">Total Players</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">TBA</div>
+                    <div class="stat-label">CTF Teams</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">TBA</div>
+                    <div class="stat-label">Duel Players</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">€1500</div>
+                    <div class="stat-label">Total Prize Pool</div>
+                </div>
+            </div>
+
+            <!-- Links -->
+            <div class="event-links">
+                <h4>More Information</h4>
+                <div class="link-buttons">
+                    <span class="link-btn pending">ESReality Thread &ndash; coming soon</span>
+                    <span class="link-btn pending">CTF Brackets &ndash; coming soon</span>
+                    <span class="link-btn pending">Duel Brackets &ndash; coming soon</span>
+                    <span class="link-btn pending">Photos &ndash; coming soon</span>
+                    <span class="link-btn pending">VODs &ndash; coming soon</span>
+                    <span class="link-btn pending">Demos &ndash; coming soon</span>
+                </div>
+            </div>
+        </div>
+
         <!-- Stuttgart 2025 Results -->
-        <div id="stuttgart2025" class="event-results active">
+        <div id="stuttgart2025" class="event-results">
             <div class="event-header">
                 <h2>Stuttgart 2025</h2>
                 <p class="event-date">June 20-22, 2025</p>
@@ -567,7 +665,7 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p>© 2026 QL City LAN Series</p>
+            <p>&copy; 2027 QL City LAN Series</p>
             <p style="margin-top: 1rem;">
                 <a href="index.html">Home</a>
                 <a href="privacy.html">Privacy</a>
@@ -578,22 +676,27 @@
     </footer>
 
     <script>
-        function showEvent(eventId) {
+        function showEvent(evt, eventId) {
             // Hide all events
-            document.querySelectorAll('.event-results').forEach(event => {
-                event.classList.remove('active');
+            document.querySelectorAll('.event-results').forEach(panel => {
+                panel.classList.remove('active');
             });
-            
+
             // Remove active class from all buttons
             document.querySelectorAll('.event-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            
+
             // Show selected event
-            document.getElementById(eventId).classList.add('active');
-            
-            // Add active class to clicked button
-            event.target.classList.add('active');
+            const target = document.getElementById(eventId);
+            if (target) {
+                target.classList.add('active');
+            }
+
+            // Add active class to the button that was clicked
+            if (evt && evt.currentTarget) {
+                evt.currentTarget.classList.add('active');
+            }
         }
     </script>
 </body>
