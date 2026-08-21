@@ -133,7 +133,7 @@
             margin-top: 2rem;
         }
 
-        .btn-primary, .btn-secondary, .btn-register {
+        .btn-primary, .btn-secondary {
   padding: 1rem 2rem;
   border-radius: 30px;
   text-decoration: none;
@@ -141,19 +141,6 @@
   transition: all 0.3s;
   display: inline-block;
 }
-        /* Register button (different color) */
-.btn-register{
-  background: linear-gradient(90deg, #1abc9c, #16a085); /* teal */
-  color:#fff;
-}
-.btn-register:hover{
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(26,188,156,.35);
-}
-
-/* nice jump when you have a fixed header */
-#register{ scroll-margin-top: 90px; }
-
 
         .btn-primary {
             background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
@@ -626,7 +613,6 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#events">Events</a></li>
                 <li><a href="#venue">Venue</a></li>
-                <li><a href="#register">Register</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="results.html">Results</a></li>
                 <li><a href="#sponsors">Partners</a></li>
@@ -701,10 +687,6 @@
                         <p>Prize Pool: TBA</p>
                     </div>
                 </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 3rem;">
-               <a href="#register" class="btn-register">Pre-Register Now</a>
             </div>
         </div>
     </section>
@@ -841,124 +823,14 @@
         </div>
     </section>
 
-    <!-- Registration Form Section -->
-    <section class="register" id="register">
+    <!-- Registration status -->
+    <section class="register">
         <div class="container">
-            <h2>Pre-Register for 2027</h2>
-            
-            <div class="registration-form-container" style="max-width: 600px; margin: 0 auto;">
-                <p style="text-align: center; margin-bottom: 2rem; color: var(--text-muted);">
-                    Dates, venue and prices for 2027 are not fixed yet. Register your interest below and we will email you as soon as they are &ndash; this is not a binding sign-up and nothing is payable now.
-                </p>
-                
-                <!-- Form connected to Formspree -->
-                <form action="https://formspree.io/f/mvgwaloj" method="POST" style="background: linear-gradient(135deg, rgba(123, 104, 238, 0.05), rgba(0, 61, 130, 0.05)); padding: 2rem; border-radius: 20px; border: 1px solid rgba(123, 104, 238, 0.2);">
+            <h2>Registration</h2>
 
-                    <!-- Formspree helpers -->
-                    <input type="hidden" name="_subject" value="QL City LAN 2027 pre-registration">
-                    <input type="hidden" name="_next" value="https://www.citylanseries.com/thank-you.html">
-                    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label for="ingame-name" style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">In-Game Name *</label>
-                        <input type="text" id="ingame-name" name="ingame_name" required style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white;">
-                    </div>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label for="email" style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">Email *</label>
-                        <input type="email" id="email" name="email" required style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white;">
-                    </div>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label for="room-type" style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">Preferred Room Type</label>
-                        <select id="room-type" name="room_type" style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white; background-color: var(--dark-bg);">
-                            <option value="">Select room type</option>
-                            <option value="single">Single</option>
-                            <option value="double">Double</option>
-                            <option value="triple">Triple</option>
-                            <option value="5-person">5-Person</option>
-                            <option value="7-person">7-Person</option>
-                            <option value="pc-only">PC Rent Only</option>
-                            <option value="undecided">Not sure yet</option>
-                        </select>
-                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">Room options and prices depend on the venue and are still TBA. This is an indication of preference only.</p>
-                    </div>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label for="roommates" style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">Preferred Roommates (for group rooms)</label>
-                        <input type="text" id="roommates" name="roommates" placeholder="Leave blank for single room" style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white;">
-                    </div>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label for="shirt-size" style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">T-Shirt Size *</label>
-                        <select id="shirt-size" name="shirt_size" required style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white; background-color: var(--dark-bg);">
-                            <option value="">Select size</option>
-                            <option value="XS">XS</option>
-                            <option value="S">S</option>
-                            <option value="M">M</option>
-                            <option value="L">L</option>
-                            <option value="XL">XL</option>
-                            <option value="XXL">XXL</option>
-                            <option value="XXXL">XXXL</option>
-                        </select>
-                    </div>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">For Shirt Design</label>
-                        <input type="text" name="player_model" placeholder="Player model (Doom, Sarge, etc.)" style="width: 100%; padding: 0.75rem; margin-bottom: 0.5rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white;">
-                        <input type="text" name="country" placeholder="Country" style="width: 100%; padding: 0.75rem; margin-bottom: 0.5rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white;">
-                        <input type="text" name="favorite_weapon" placeholder="Favorite weapon" style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white;">
-                    </div>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">Which events will you play? *</label>
-                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                            <label style="display: flex; align-items: center; cursor: pointer;">
-                                <input type="checkbox" name="events" value="CTF" style="margin-right: 0.5rem;">
-                                <span>CTF Tournament</span>
-                            </label>
-                            <label style="display: flex; align-items: center; cursor: pointer;">
-                                <input type="checkbox" name="events" value="Duel" style="margin-right: 0.5rem;">
-                                <span>Duel Tournament</span>
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">Media Preference</label>
-                        <label style="display: flex; align-items: flex-start; cursor: pointer; color: var(--text-muted);">
-                            <input type="checkbox" name="media_low_profile" value="yes" style="margin-right: 0.75rem; margin-top: 0.35rem; flex-shrink: 0;">
-                            <span>I would rather not be featured in close-up photos or on stream where that can reasonably be avoided.</span>
-                        </label>
-                    </div>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label for="comments" style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">Additional Comments</label>
-                        <textarea id="comments" name="comments" rows="3" style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white; resize: vertical;"></textarea>
-                    </div>
-                    
-                    <div style="margin-bottom: 1.5rem; padding: 1rem; background: rgba(123, 104, 238, 0.06); border: 1px solid rgba(123, 104, 238, 0.25); border-radius: 8px;">
-                        <label for="media-consent" style="display: flex; align-items: flex-start; cursor: pointer;">
-                            <input type="checkbox" id="media-consent" name="media_consent" value="yes" required style="margin-right: 0.75rem; margin-top: 0.35rem; flex-shrink: 0;">
-                            <span>I agree that my nickname and photos/videos of me from the event may be used on this website, our Discord, and event media (streams, VODs, results). *</span>
-                        </label>
-                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.75rem; margin-left: 1.9rem;">See our <a href="privacy.html" style="color: var(--primary-purple);">Privacy Notice</a> for what we collect, how long we keep it, and how to ask for something to be removed.</p>
-                    </div>
-
-                    <button type="submit" style="width: 100%; padding: 1rem; background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue)); color: white; border: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s;">
-                        Submit Pre-Registration
-                    </button>
-                </form>
-                
-                <p style="text-align: center; margin-top: 2rem; color: var(--text-muted); font-size: 0.9rem;">
-                    Pre-registration reserves your place in the queue but does not guarantee a slot. Places are generally allocated on a first-come, first-served basis; however, organizers may accept or decline any registration at their discretion. QL LAN City Series and the host venue may change rules, conditions, schedules, or prizes without notice. 
-                </p>
-                
-                <div style="text-align: center; margin-top: 2rem;">
-                    <p style="margin-bottom: 1rem;">Need help or have questions?</p>
-                    <a href="https://discord.gg/u8Ttp8frqU" class="btn-secondary" target="_blank">Join our Discord for Support</a>
-                </div>
+            <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+                <p style="margin-bottom: 2rem; color: var(--text-muted);">Registration is not open yet. Announcements first on Discord.</p>
+                <a href="https://discord.gg/u8Ttp8frqU" class="btn-primary" target="_blank">Join our Discord</a>
             </div>
         </div>
     </section>
@@ -996,7 +868,7 @@
                 
                 <div class="faq-item" style="margin-bottom: 2rem;">
                     <h3 style="color: var(--primary-purple); margin-bottom: 0.5rem;">Where do I sign up?</h3>
-                    <p style="color: var(--text-muted);">Use the registration form on the <a href="#register" style="color: var(--primary-purple);">Register</a> page. Status updates will be posted in Discord.</p>
+                    <p style="color: var(--text-muted);">Registration is not open yet. When it opens it will be announced on our <a href="https://discord.gg/u8Ttp8frqU" target="_blank" style="color: var(--primary-purple);">Discord</a> first.</p>
                 </div>
                 
                 <div class="faq-item" style="margin-bottom: 2rem;">
@@ -1051,8 +923,8 @@
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3>Register</h3>
-                    <p>Send your registration email with all required information</p>
+                    <h3>Watch for the opening</h3>
+                    <p>Registration is not open yet &ndash; we will announce it in Discord when it is</p>
                 </div>
             </div>
             
