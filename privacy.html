@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Notice - QL City LAN Series</title>
+    <meta name="description" content="How the QL City LAN Series handles the information you send us through the pre-registration form, and how event photos, videos and nicknames are used.">
+    <meta name="robots" content="index, follow">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-purple: #7B68EE;
+            --primary-blue: #003D82;
+            --dark-bg: #0A0B1E;
+            --darker-bg: #050510;
+            --text-light: #ffffff;
+            --text-muted: #a8a8b3;
+            --accent-cyan: #00ffff;
+            --accent-orange: #ff6b35;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(10, 11, 30, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-purple);
+        }
+
+        .discord-btn {
+            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .discord-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(123, 104, 238, 0.4);
+        }
+
+        /* Page header */
+        .page-header {
+            background: linear-gradient(135deg, rgba(123, 104, 238, 0.15), rgba(0, 61, 130, 0.15));
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--primary-purple), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-header p {
+            color: var(--text-muted);
+        }
+
+        /* Content */
+        .policy {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem 4rem;
+        }
+
+        .policy section {
+            margin-bottom: 2.5rem;
+        }
+
+        .policy h2 {
+            font-size: 1.5rem;
+            color: var(--primary-purple);
+            margin-bottom: 0.75rem;
+        }
+
+        .policy p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .policy ul {
+            list-style: none;
+            margin: 0 0 1rem 0;
+        }
+
+        .policy li {
+            color: var(--text-muted);
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .policy li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary-purple);
+        }
+
+        .policy a {
+            color: var(--primary-purple);
+        }
+
+        .policy strong {
+            color: var(--text-light);
+        }
+
+        .callout {
+            background: linear-gradient(135deg, rgba(123, 104, 238, 0.08), rgba(0, 61, 130, 0.08));
+            border: 1px solid rgba(123, 104, 238, 0.25);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .callout p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--darker-bg);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(123, 104, 238, 0.2);
+        }
+
+        .footer-content {
+            color: var(--text-muted);
+        }
+
+        .footer-content a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+
+        .footer-content a:hover {
+            color: var(--primary-purple);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .policy {
+                padding: 2rem 1.5rem 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="nav-logo">QL CITY LAN SERIES</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="https://discord.gg/u8Ttp8frqU" class="discord-btn" target="_blank">Join Discord</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="page-header">
+        <h1>Privacy Notice</h1>
+        <p>What we collect, why we collect it, and how to get it removed</p>
+    </div>
+
+    <div class="policy">
+        <div class="callout">
+            <p>The QL City LAN Series is a community event run by volunteers. We keep this short and in plain language, because that is more useful to you than legal boilerplate. If anything here is unclear, ask us &ndash; contact details are at the bottom.</p>
+        </div>
+
+        <section>
+            <h2>Who we are</h2>
+            <p>The QL City LAN Series is a community-run Quake Live LAN event organised by players, for players. We are the ones responsible for the information described on this page.</p>
+        </section>
+
+        <section>
+            <h2>What the pre-registration form collects</h2>
+            <p>If you fill in the pre-registration form on our homepage, we receive whatever you put into it:</p>
+            <ul>
+                <li>Your <strong>in-game name</strong> (nickname)</li>
+                <li>Your <strong>email address</strong></li>
+                <li>Your <strong>room type preference</strong> and any <strong>preferred roommates</strong> you name</li>
+                <li>Your <strong>T-shirt size</strong>, and the player model, country and favourite weapon you would like on the shirt design</li>
+                <li>Which <strong>tournaments</strong> you want to play (CTF, Duel)</li>
+                <li>Your answer to the <strong>photo and video consent</strong> question</li>
+                <li>Anything you write in the <strong>additional comments</strong> box</li>
+            </ul>
+            <p>Only the in-game name, email address and consent answer are required. Everything else is optional, and you can leave out anything you would rather not tell us. Please do not put sensitive personal information in the comments box.</p>
+        </section>
+
+        <section>
+            <h2>How the form is processed</h2>
+            <p>The form is handled by <strong>Formspree</strong>, a third-party form service. When you press submit, your entry goes to Formspree's servers and is then emailed on to our organiser inbox at <span id="pp-mail-1"></span>. Formspree stores a copy of the submission in our account there. Their handling of the data is covered by <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">Formspree's own privacy policy</a>.</p>
+            <p>We do not use analytics, advertising or tracking cookies anywhere on this site. No third-party scripts run on these pages.</p>
+        </section>
+
+        <section>
+            <h2>Why we need it</h2>
+            <p>We use what you send us purely to organise the event: to plan capacity, allocate rooms and beds, seed and run the tournament brackets, order the correct T-shirt sizes, and email you about your registration and about payment once details are confirmed.</p>
+            <p>We do not sell your information, and we do not share it with sponsors or anyone else for marketing.</p>
+        </section>
+
+        <section>
+            <h2>Nicknames, photos and video</h2>
+            <p>LAN events are social and public by nature. If you take part:</p>
+            <ul>
+                <li>Your <strong>nickname</strong> may appear in brackets, match results, the results page on this site, and in Discord announcements</li>
+                <li><strong>Photos and videos</strong> taken at the event may be published on this website, in our Discord server, and in event media such as Twitch streams, VODs and highlight videos</li>
+            </ul>
+            <p>This is what the consent checkbox on the pre-registration form covers. If you would rather not appear in shared photos or video, tell us &ndash; say so in the comments box or message us on Discord, and we will do our best to keep you out of published media. Tournament results and brackets will normally still list your nickname, since they are the public record of the competition.</p>
+        </section>
+
+        <section>
+            <h2>How long we keep it</h2>
+            <p>Registration data is kept while we are organising the event and for a short period afterwards to wrap things up &ndash; refunds, prize payouts, and any follow-up. After that we delete the registration list from our Formspree account and our inbox.</p>
+            <p>Published material outlasts that on purpose: results, brackets, photos and videos stay up as the archive of the event, unless you ask us to remove something.</p>
+        </section>
+
+        <section>
+            <h2>Your choices</h2>
+            <p>You can ask us at any time to show you what we hold about you, correct it, delete it, or take a photo, video or nickname down from this site or our Discord. Just ask &ndash; you do not need to give a reason, and we will not make it difficult.</p>
+        </section>
+
+        <section>
+            <h2>Contact</h2>
+            <p>For anything on this page, including removal requests, email <span id="pp-mail-2"></span> or message the organisers on <a href="https://discord.gg/u8Ttp8frqU" target="_blank" rel="noopener">our Discord</a>.</p>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2027 QL City LAN Series</p>
+            <p style="margin-top: 1rem;">
+                <a href="index.html">Home</a>
+                <a href="results.html">Results</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="https://discord.gg/u8Ttp8frqU" target="_blank">Discord</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Email addresses assembled at runtime so they are not sitting in the
+        // markup for scrapers, matching how the address is handled site-wide.
+        (function () {
+            var user = 'info';
+            var domain = 'citylanseries.com';
+            var shown = user + '[at]' + domain.replace('.', '[dot]');
+            ['pp-mail-1', 'pp-mail-2'].forEach(function (id) {
+                var el = document.getElementById(id);
+                if (!el) return;
+                var a = document.createElement('a');
+                a.href = 'mailto:' + user + '@' + domain;
+                a.textContent = shown;
+                el.appendChild(a);
+            });
+        })();
+    </script>
+</body>
+</html>
