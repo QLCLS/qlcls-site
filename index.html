@@ -913,15 +913,21 @@
     <!-- Registration Form Section -->
     <section class="register" id="register">
         <div class="container">
-            <h2>Register for Stuttgart '26</h2>
+            <h2>Pre-Register for 2027</h2>
             
             <div class="registration-form-container" style="max-width: 600px; margin: 0 auto;">
                 <p style="text-align: center; margin-bottom: 2rem; color: var(--text-muted);">
-                    Fill out the form below to register. You'll receive confirmation and payment details via email.
+                    Dates, venue and prices for 2027 are not fixed yet. Register your interest below and we will email you as soon as they are &ndash; this is not a binding sign-up and nothing is payable now.
                 </p>
                 
                 <!-- Form connected to Formspree -->
                 <form action="https://formspree.io/f/mvgwaloj" method="POST" style="background: linear-gradient(135deg, rgba(123, 104, 238, 0.05), rgba(0, 61, 130, 0.05)); padding: 2rem; border-radius: 20px; border: 1px solid rgba(123, 104, 238, 0.2);">
+
+                    <!-- Formspree helpers -->
+                    <input type="hidden" name="_subject" value="QL City LAN 2027 pre-registration">
+                    <input type="hidden" name="_next" value="/thank-you.html">
+                    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+
                     
                     <div style="margin-bottom: 1.5rem;">
                         <label for="ingame-name" style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">In-Game Name *</label>
@@ -934,16 +940,18 @@
                     </div>
                     
                     <div style="margin-bottom: 1.5rem;">
-                        <label for="room-type" style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">Preferred Room Type *</label>
-                        <select id="room-type" name="room_type" required style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white; background-color: var(--dark-bg);">
+                        <label for="room-type" style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">Preferred Room Type</label>
+                        <select id="room-type" name="room_type" style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white; background-color: var(--dark-bg);">
                             <option value="">Select room type</option>
-                            <option value="single">Single (€360 + €30)</option>
-                            <option value="double">Double (€290 + €30)</option>
-                            <option value="triple">Triple (€255 + €30)</option>
-                            <option value="5-person">5-Person (€255 + €30)</option>
-                            <option value="7-person">7-Person (€255 + €30)</option>
-                            <option value="pc-only">PC Rent Only (€150 + €30)</option>
+                            <option value="single">Single</option>
+                            <option value="double">Double</option>
+                            <option value="triple">Triple</option>
+                            <option value="5-person">5-Person</option>
+                            <option value="7-person">7-Person</option>
+                            <option value="pc-only">PC Rent Only</option>
+                            <option value="undecided">Not sure yet</option>
                         </select>
+                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">Room options and prices depend on the venue and are still TBA. This is an indication of preference only.</p>
                     </div>
                     
                     <div style="margin-bottom: 1.5rem;">
@@ -987,12 +995,11 @@
                     </div>
                     
                     <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">Photo/Video Consent *</label>
-                        <select name="media_consent" required style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white; background-color: var(--dark-bg);">
-                            <option value="">Select option</option>
-                            <option value="yes">YES - I agree to photos/videos being shared</option>
-                            <option value="no">NO - I don't want to appear in shared media</option>
-                        </select>
+                        <label style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">Media Preference</label>
+                        <label style="display: flex; align-items: flex-start; cursor: pointer; color: var(--text-muted);">
+                            <input type="checkbox" name="media_low_profile" value="yes" style="margin-right: 0.75rem; margin-top: 0.35rem; flex-shrink: 0;">
+                            <span>I would rather not be featured in close-up photos or on stream where that can reasonably be avoided.</span>
+                        </label>
                     </div>
                     
                     <div style="margin-bottom: 1.5rem;">
@@ -1000,13 +1007,21 @@
                         <textarea id="comments" name="comments" rows="3" style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white; resize: vertical;"></textarea>
                     </div>
                     
+                    <div style="margin-bottom: 1.5rem; padding: 1rem; background: rgba(123, 104, 238, 0.06); border: 1px solid rgba(123, 104, 238, 0.25); border-radius: 8px;">
+                        <label for="media-consent" style="display: flex; align-items: flex-start; cursor: pointer;">
+                            <input type="checkbox" id="media-consent" name="media_consent" value="yes" required style="margin-right: 0.75rem; margin-top: 0.35rem; flex-shrink: 0;">
+                            <span>I agree that my nickname and photos/videos of me from the event may be used on this website, our Discord, and event media (streams, VODs, results). *</span>
+                        </label>
+                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.75rem; margin-left: 1.9rem;">See our <a href="privacy.html" style="color: var(--primary-purple);">Privacy Notice</a> for what we collect, how long we keep it, and how to ask for something to be removed.</p>
+                    </div>
+
                     <button type="submit" style="width: 100%; padding: 1rem; background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue)); color: white; border: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s;">
-                        Submit Registration
+                        Submit Pre-Registration
                     </button>
                 </form>
                 
                 <p style="text-align: center; margin-top: 2rem; color: var(--text-muted); font-size: 0.9rem;">
-                    Registrations are generally processed on a first-come, first-served basis; however, organizers may accept or decline any registration at their discretion. QL LAN City Series and 1337 Camp may change rules, conditions, schedules, or prizes without notice. 
+                    Pre-registration reserves your place in the queue but does not guarantee a slot. Places are generally allocated on a first-come, first-served basis; however, organizers may accept or decline any registration at their discretion. QL LAN City Series and the host venue may change rules, conditions, schedules, or prizes without notice. 
                 </p>
                 
                 <div style="text-align: center; margin-top: 2rem;">
