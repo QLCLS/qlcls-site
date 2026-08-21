@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Notice - QL City LAN Series</title>
-    <meta name="description" content="How the QL City LAN Series handles nicknames, results, photos and video, and how to ask for something to be removed.">
+    <meta name="description" content="How the QL City LAN Series handles the information you send us through the registration form, and how event photos, videos and nicknames are used.">
     <meta name="robots" content="index, follow">
 
     <link rel="icon" href="assets/favicon.ico" sizes="16x16 32x32 48x48 64x64 128x128 256x256">
@@ -170,7 +170,7 @@
     <!-- Header -->
     <div class="page-header">
         <h1>Privacy Notice</h1>
-        <p>What appears on this site, and how to get it removed</p>
+        <p>What we collect, why we collect it, and how to get it removed</p>
     </div>
 
     <div class="policy">
@@ -184,9 +184,30 @@
         </section>
 
         <section>
-            <h2>What this site collects</h2>
-            <p><strong>Nothing.</strong> There are no forms on this site, so there is nothing to fill in and nothing gets sent to us by visiting. We use no analytics, no advertising and no tracking cookies, and no third-party scripts run on these pages.</p>
-            <p>If registration opens for a future edition, this page will be updated to describe exactly what that collects before it goes live.</p>
+            <h2>What the registration form collects</h2>
+            <p>If you fill in the registration form on our homepage, we receive whatever you put into it:</p>
+            <ul>
+                <li>Your <strong>in-game name</strong> (nickname)</li>
+                <li>Your <strong>email address</strong></li>
+                <li>Your <strong>room type preference</strong> and any <strong>preferred roommates</strong> you name</li>
+                <li>Your <strong>T-shirt size</strong>, and the player model, country and favourite weapon you would like on the shirt design</li>
+                <li>Which <strong>tournaments</strong> you want to play (CTF, Duel)</li>
+                <li>Your answer to the <strong>photo and video consent</strong> question</li>
+                <li>Anything you write in the <strong>additional comments</strong> box</li>
+            </ul>
+            <p>Only the in-game name, email address and consent answer are required. Everything else is optional, and you can leave out anything you would rather not tell us. Please do not put sensitive personal information in the comments box.</p>
+        </section>
+
+        <section>
+            <h2>How the form is processed</h2>
+            <p>The form is handled by <strong>Formspree</strong>, a third-party form service. When you press submit, your entry goes to Formspree's servers and is then emailed on to our organiser inbox at <span id="pp-mail-1"></span>. Formspree stores a copy of the submission in our account there. Their handling of the data is covered by <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">Formspree's own privacy policy</a>.</p>
+            <p>We do not use analytics, advertising or tracking cookies anywhere on this site. No third-party scripts run on these pages.</p>
+        </section>
+
+        <section>
+            <h2>Why we need it</h2>
+            <p>We use what you send us purely to organise the event: to plan capacity, allocate rooms and beds, seed and run the tournament brackets, order the correct T-shirt sizes, and email you about your registration and about payment once details are confirmed.</p>
+            <p>We do not sell your information, and we do not share it with sponsors or anyone else for marketing.</p>
         </section>
 
         <section>
@@ -196,17 +217,18 @@
                 <li>Your <strong>nickname</strong> may appear in brackets, match results, the results page on this site, and in Discord announcements</li>
                 <li><strong>Photos and videos</strong> taken at the event may be published on this website, in our Discord server, and in event media such as Twitch streams, VODs and highlight videos</li>
             </ul>
-            <p>If you would rather not appear in shared photos or video, tell us &ndash; message the organisers on Discord and we will do our best to keep you out of published media. Tournament results and brackets will normally still list your nickname, since they are the public record of the competition.</p>
+            <p>This is what the consent checkbox on the registration form covers. If you would rather not appear in shared photos or video, tell us &ndash; say so in the comments box or message us on Discord, and we will do our best to keep you out of published media. Tournament results and brackets will normally still list your nickname, since they are the public record of the competition.</p>
         </section>
 
         <section>
-            <h2>How long it stays up</h2>
-            <p>Results, brackets, photos and videos stay published as the archive of each event, unless you ask us to take something down.</p>
+            <h2>How long we keep it</h2>
+            <p>Registration data is kept while we are organising the event and for a short period afterwards to wrap things up &ndash; refunds, prize payouts, and any follow-up. After that we delete the registration list from our Formspree account and our inbox.</p>
+            <p>Published material outlasts that on purpose: results, brackets, photos and videos stay up as the archive of the event, unless you ask us to remove something.</p>
         </section>
 
         <section>
             <h2>Your choices</h2>
-            <p>You can ask us at any time to take a photo, video or nickname down from this site or our Discord, or to correct something we have got wrong. Just ask &ndash; you do not need to give a reason, and we will not make it difficult.</p>
+            <p>You can ask us at any time to show you what we hold about you, correct it, delete it, or take a photo, video or nickname down from this site or our Discord. Just ask &ndash; you do not need to give a reason, and we will not make it difficult.</p>
         </section>
 
         <section>
@@ -235,7 +257,7 @@
             var user = 'info';
             var domain = 'citylanseries.com';
             var shown = user + '[at]' + domain.replace('.', '[dot]');
-            ['pp-mail-2'].forEach(function (id) {
+            ['pp-mail-1', 'pp-mail-2'].forEach(function (id) {
                 var el = document.getElementById(id);
                 if (!el) return;
                 var a = document.createElement('a');
