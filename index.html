@@ -32,61 +32,42 @@
     <link rel="stylesheet" href="assets/site.css">
 
     <style>
-        /* Navigation */
+        /* ---------- Navigation ---------- */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 11, 30, 0.95);
-            backdrop-filter: blur(10px);
             z-index: 1000;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
+            transition: padding 0.2s ease;
         }
 
         nav.scrolled {
             padding: 0.5rem 0;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .discord-btn {
-            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
-            color: white;
-            padding: 0.6rem 1.5rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .discord-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(123, 104, 238, 0.4);
         }
 
         /* Mobile menu */
         .mobile-menu-toggle {
             display: none;
             flex-direction: column;
-            gap: 4px;
+            gap: 5px;
             cursor: pointer;
+            padding: 4px;
         }
 
         .mobile-menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--text-light);
-            transition: all 0.3s;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            transition: background 0.15s;
         }
 
-        /* Hero Section */
+        /* ---------- Hero ---------- */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            background: radial-gradient(circle at 50% 50%, rgba(123, 104, 238, 0.1) 0%, transparent 50%);
             margin-top: -80px;
             padding-top: 80px;
         }
@@ -98,11 +79,21 @@
         }
 
         .logo-container {
-            width: 300px;
-            height: 300px;
-            margin: 0 auto 2rem;
+            width: 260px;
+            height: 260px;
+            margin: 0 auto 2.5rem;
             position: relative;
             animation: float 6s ease-in-out infinite;
+        }
+
+        /* subtle red glow behind the mark */
+        .logo-container::before {
+            content: '';
+            position: absolute;
+            inset: -22%;
+            background: radial-gradient(circle at 50% 50%, rgba(214, 28, 36, 0.20) 0%, rgba(214, 28, 36, 0.08) 42%, transparent 68%);
+            z-index: -1;
+            pointer-events: none;
         }
 
         @keyframes float {
@@ -110,25 +101,51 @@
             50% { transform: translateY(-20px); }
         }
 
+        .hero-kicker {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-kicker::before {
+            content: '';
+            width: 32px;
+            height: 2px;
+            background: var(--accent);
+        }
+
         .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 900;
-            letter-spacing: -2px;
+            font-family: var(--font-display);
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 0.98;
+            letter-spacing: 2px;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 .line {
+            display: block;
         }
 
         .hero .date {
-            font-size: 1.8rem;
+            font-size: 1.1rem;
             color: var(--text-muted);
-            margin-bottom: 0.5rem;
+            max-width: 620px;
+            margin: 0 auto 0.5rem;
         }
 
         .hero .location {
-            font-size: 1.2rem;
-            color: var(--text-muted);
+            font-size: 0.95rem;
+            color: var(--text-faint);
             margin-bottom: 2rem;
         }
 
@@ -136,119 +153,88 @@
             display: flex;
             gap: 1rem;
             justify-content: center;
-            margin-top: 2rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
         }
 
-        .btn-primary, .btn-secondary, .btn-register {
-  padding: 1rem 2rem;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 0.3s;
-  display: inline-block;
-}
-        /* Register button (different color) */
-.btn-register{
-  background: linear-gradient(90deg, #1abc9c, #16a085); /* teal */
-  color:#fff;
-}
-.btn-register:hover{
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(26,188,156,.35);
-}
-
-/* nice jump when you have a fixed header */
-#register{ scroll-margin-top: 90px; }
-
-
-        .btn-primary {
-            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
-            color: white;
+        #register {
+            scroll-margin-top: 90px;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(123, 104, 238, 0.4);
-        }
-
-        .btn-secondary {
-            border: 2px solid var(--primary-purple);
-            color: var(--primary-purple);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary-purple);
-            color: white;
-        }
-
-        /* Sections */
-        section {
-            padding: 5rem 2rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
+        /* ---------- Section headings ---------- */
         h2 {
-            font-size: 3rem;
+            font-size: 2.25rem;
             margin-bottom: 3rem;
-            text-align: center;
-            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--text);
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
-        /* Event Overview */
-        .overview {
-            background: var(--darker-bg);
+        h2::before {
+            content: '';
+            width: 32px;
+            height: 2px;
+            background: var(--accent);
+            flex-shrink: 0;
         }
 
+        .overview,
+        .venue,
+        .sponsors {
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+        }
+
+        /* ---------- Stats bar ---------- */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            margin-bottom: 4rem;
         }
 
         .stat-card {
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(0, 61, 130, 0.1));
-            border: 1px solid rgba(123, 104, 238, 0.2);
-            padding: 2rem;
-            border-radius: 15px;
+            background: var(--bg-elevated);
+            padding: 2rem 1.5rem;
             text-align: center;
-            transition: transform 0.3s, border-color 0.3s;
+            transition: background 0.15s;
         }
 
         .stat-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-purple);
+            background: #17171b;
         }
 
         .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-family: var(--font-display);
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text);
+            line-height: 1.1;
         }
 
-        /* Tournaments */
+        .stat-card.is-next .stat-number {
+            color: var(--accent);
+        }
+
+        /* ---------- Tournaments ---------- */
         .tournaments-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 1.5rem;
             margin-top: 3rem;
         }
 
         .tournament-card {
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.05), rgba(0, 61, 130, 0.05));
-            border: 1px solid rgba(123, 104, 238, 0.2);
-            border-radius: 20px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
             padding: 2.5rem;
             position: relative;
-            overflow: hidden;
         }
 
         .tournament-card::before {
@@ -256,22 +242,15 @@
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
-        }
-
-        .tournament-card.ctf::before {
-            background: var(--accent-cyan);
-        }
-
-        .tournament-card.duel::before {
-            background: var(--accent-orange);
+            width: 56px;
+            height: 2px;
+            background: var(--accent);
         }
 
         .tournament-card h3 {
-            font-size: 2rem;
+            font-size: 1.5rem;
             margin-bottom: 1.5rem;
+            color: var(--text);
         }
 
         .tournament-info {
@@ -279,18 +258,23 @@
             color: var(--text-muted);
         }
 
+        .tournament-info strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
         .prize {
-            font-size: 1.2rem;
-            color: var(--text-light);
+            font-family: var(--font-display);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text);
             margin-top: 1.5rem;
-            font-weight: bold;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border);
         }
 
-        /* Venue */
-        .venue {
-            background: var(--darker-bg);
-        }
-
+        /* ---------- Venue ---------- */
         .venue-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -299,14 +283,19 @@
         }
 
         .venue-info h3 {
-            font-size: 2rem;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: var(--primary-purple);
+            color: var(--text);
         }
 
         .venue-info p {
             margin-bottom: 1rem;
             color: var(--text-muted);
+        }
+
+        .venue-info strong {
+            color: var(--text);
+            font-weight: 500;
         }
 
         .venue-features {
@@ -315,22 +304,21 @@
         }
 
         .venue-features li {
-            padding: 0.5rem 0;
-            color: var(--text-light);
+            padding: 0.4rem 0;
+            color: var(--text-muted);
         }
 
         .venue-features li::before {
-            content: "▸ ";
-            color: var(--primary-purple);
-            font-weight: bold;
-            margin-right: 0.5rem;
+            content: "▸";
+            color: var(--accent);
+            margin-right: 0.6rem;
         }
 
         .venue-image {
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(0, 61, 130, 0.1));
-            border: 1px solid rgba(123, 104, 238, 0.2);
-            border-radius: 20px;
-            padding: 2rem;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            padding: 0;
+            overflow: hidden;
             text-align: center;
             min-height: 300px;
             display: flex;
@@ -338,173 +326,277 @@
             justify-content: center;
         }
 
-        /* Legacy */
+        /* ---------- Legacy ---------- */
         .legacy-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
             margin: 3rem 0;
         }
 
         .legacy-card {
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.05), rgba(0, 61, 130, 0.05));
-            border: 1px solid rgba(123, 104, 238, 0.2);
-            border-radius: 15px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
             padding: 2rem;
-            text-align: center;
+            text-align: left;
         }
 
         .legacy-card h3 {
-            color: var(--primary-purple);
-            margin-bottom: 1rem;
+            color: var(--text);
+            font-size: 1.25rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .legacy-card > p {
+            color: var(--text-faint);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .champions-list {
             list-style: none;
-            margin-top: 1rem;
+            margin-top: 1.25rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border);
         }
 
         .champions-list li {
-            padding: 0.5rem 0;
+            padding: 0.35rem 0;
             color: var(--text-muted);
         }
 
         .testimonial {
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(0, 61, 130, 0.1));
-            border-left: 4px solid var(--primary-purple);
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-left: 2px solid var(--accent);
             padding: 2rem;
-            margin: 3rem 0;
-            border-radius: 0 10px 10px 0;
+            margin: 3rem 0 0;
         }
 
         .testimonial p {
-            font-size: 1.2rem;
-            font-style: italic;
-            color: var(--text-light);
+            font-size: 1.05rem;
+            color: var(--text-muted);
         }
 
         .testimonial-author {
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             text-align: right;
-            color: var(--primary-purple);
+            color: var(--text-faint);
             margin-top: 1rem;
         }
 
-        /* Sponsors */
-        .sponsors {
-            background: var(--darker-bg);
-        }
-
+        /* ---------- Partners ---------- */
         .sponsors-current {
             text-align: center;
             margin-bottom: 3rem;
         }
 
+        .sponsors-current > h3,
+        .sponsors-previous h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-faint);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
         .sponsor-main {
             display: inline-block;
-            padding: 2rem;
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(0, 61, 130, 0.1));
-            border: 1px solid rgba(123, 104, 238, 0.2);
-            border-radius: 15px;
-            margin: 1rem;
+            padding: 2.5rem 3rem;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            margin: 0;
         }
 
         .sponsors-previous {
-            margin-top: 3rem;
-        }
-
-        .sponsors-previous h3 {
-            text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
+            margin-top: 3.5rem;
         }
 
         .sponsors-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 2rem;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
         }
 
         .sponsor-item {
-            padding: 1rem 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
+            padding: 1.5rem 2rem;
+            background: var(--bg-elevated);
             color: var(--text-muted);
+            flex: 1 1 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .sponsor-cta {
             text-align: center;
-            margin-top: 3rem;
-            padding: 2rem;
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.05), rgba(0, 61, 130, 0.05));
-            border-radius: 20px;
+            margin-top: 3.5rem;
+            padding: 2.5rem;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
         }
 
         .sponsor-cta h3 {
-            color: var(--primary-purple);
+            color: var(--text);
+            font-size: 1.25rem;
             margin-bottom: 1rem;
         }
 
-        /* How to Participate */
+        .sponsor-cta p {
+            color: var(--text-muted);
+        }
+
+        /* ---------- Registration ---------- */
+        .register h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        /* ---------- Form controls ---------- */
+        .register form {
+            background: var(--bg-elevated) !important;
+            border: 1px solid var(--border) !important;
+            border-radius: 0 !important;
+        }
+
+        .register label {
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .register input[type="text"],
+        .register input[type="email"],
+        .register select,
+        .register textarea {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            background: var(--bg) !important;
+            border: 1px solid var(--border) !important;
+            border-radius: 0 !important;
+            color: var(--text);
+            transition: border-color 0.15s;
+        }
+
+        .register input[type="text"]:focus,
+        .register input[type="email"]:focus,
+        .register select:focus,
+        .register textarea:focus {
+            outline: none;
+            border-color: var(--accent) !important;
+        }
+
+        .register input::placeholder,
+        .register textarea::placeholder {
+            color: var(--text-faint);
+        }
+
+        .register input[type="checkbox"] {
+            accent-color: var(--accent);
+            width: 16px;
+            height: 16px;
+        }
+
+        .register button[type="submit"] {
+            font-family: var(--font-display);
+            font-size: 0.95rem !important;
+            font-weight: 600 !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: var(--accent) !important;
+            color: var(--text) !important;
+            border: 1px solid var(--accent) !important;
+            border-radius: 0 !important;
+            cursor: pointer;
+            transition: background 0.15s, border-color 0.15s;
+        }
+
+        .register button[type="submit"]:hover {
+            background: var(--accent-bright) !important;
+            border-color: var(--accent-bright) !important;
+        }
+
+        /* ---------- FAQ ---------- */
+        .faq {
+            border-top: 1px solid var(--border);
+        }
+
+        .faq-item h3 {
+            font-size: 1.05rem;
+            color: var(--text);
+            letter-spacing: 1px;
+        }
+
+        /* ---------- How to Participate ---------- */
         .participate {
             text-align: center;
+            border-top: 1px solid var(--border);
         }
 
         .steps {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
             margin: 3rem 0;
         }
 
         .step {
-            padding: 2rem;
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.05), rgba(0, 61, 130, 0.05));
-            border: 1px solid rgba(123, 104, 238, 0.2);
-            border-radius: 15px;
+            padding: 2.5rem 2rem 2rem;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
             position: relative;
+            text-align: left;
         }
 
         .step-number {
             position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
+            top: 0;
+            left: 0;
+            background: var(--accent);
+            color: var(--text);
+            font-family: var(--font-display);
+            font-weight: 700;
+            width: 28px;
+            height: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
         }
 
         .step h3 {
-            margin-top: 1rem;
+            margin-top: 0.5rem;
             margin-bottom: 0.5rem;
-            color: var(--primary-purple);
+            color: var(--text);
+            font-size: 1.05rem;
         }
 
-        /* Footer */
-        footer {
-            background: var(--darker-bg);
-            padding: 3rem 2rem 2rem;
-            border-top: 1px solid rgba(123, 104, 238, 0.2);
+        .step p {
+            color: var(--text-muted);
         }
 
+        /* ---------- Footer ---------- */
         .footer-content {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 0 auto 2rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 2rem;
-            margin-bottom: 2rem;
         }
 
         .footer-section h3 {
-            color: var(--primary-purple);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-faint);
             margin-bottom: 1rem;
         }
 
@@ -513,21 +605,24 @@
             text-decoration: none;
             display: block;
             padding: 0.25rem 0;
-            transition: color 0.3s;
+            transition: color 0.15s;
         }
 
         .footer-section a:hover {
-            color: var(--primary-purple);
+            color: var(--accent-bright);
         }
 
         .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
             text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid rgba(123, 104, 238, 0.1);
-            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            color: var(--text-faint);
+            font-size: 0.9rem;
         }
 
-        /* Particles Background */
+        /* ---------- Particles ---------- */
         .particles {
             position: fixed;
             top: 0;
@@ -535,12 +630,12 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1;
+            z-index: 0;
         }
 
         .particle {
             position: absolute;
-            background: radial-gradient(circle, rgba(123, 104, 238, 0.3) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(214, 28, 36, 0.16) 0%, transparent 70%);
             border-radius: 50%;
             animation: particle-float 20s infinite linear;
         }
@@ -551,18 +646,18 @@
                 opacity: 0;
             }
             10% {
-                opacity: 0.4;
+                opacity: 1;
             }
             90% {
-                opacity: 0.4;
+                opacity: 1;
             }
             to {
-                transform: translateY(-100vh) translateX(100px);
+                transform: translateY(-100px) translateX(100px);
                 opacity: 0;
             }
         }
 
-        /* Responsive */
+        /* ---------- Responsive ---------- */
         @media (max-width: 768px) {
             .mobile-menu-toggle {
                 display: flex;
@@ -571,47 +666,67 @@
             .nav-links {
                 position: fixed;
                 top: 60px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 60px);
-                background: var(--dark-bg);
+                left: 0;
+                right: 0;
+                background: var(--bg);
+                border-bottom: 1px solid var(--border);
                 flex-direction: column;
-                padding: 2rem;
-                transition: left 0.3s;
+                align-items: flex-start;
+                gap: 0;
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.25s ease;
             }
 
             .nav-links.active {
-                left: 0;
+                max-height: 420px;
+            }
+
+            .nav-links li {
+                width: 100%;
+                border-top: 1px solid var(--border);
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 0.9rem 1.25rem;
+                border-bottom: none;
             }
 
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.75rem;
+                letter-spacing: 1px;
             }
 
             .hero .date {
-                font-size: 1.3rem;
-            }
-
-            .tournaments-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .venue-content {
-                grid-template-columns: 1fr;
+                font-size: 1rem;
             }
 
             .hero-cta {
                 flex-direction: column;
-                align-items: center;
+                align-items: stretch;
+            }
+
+            .tournaments-grid,
+            .venue-content {
+                grid-template-columns: 1fr;
             }
 
             h2 {
-                font-size: 2rem;
+                font-size: 1.75rem;
+                margin-bottom: 2rem;
             }
 
             .logo-container {
-                width: 200px;
-                height: 200px;
+                width: 190px;
+                height: 190px;
+            }
+
+            .tournament-card,
+            .step,
+            .sponsor-cta {
+                padding: 1.75rem;
             }
         }
     </style>
@@ -647,12 +762,12 @@
             <div class="logo-container">
                 <img src="qlcls-logo-512.png" alt="QL City LAN Series logo" style="width: 100%; height: 100%; object-fit: contain;">
             </div>
-            <h1>QL CITY LAN SERIES</h1>
-            <div class="date">Next edition &ndash; dates and location to be announced</div>
-            <div class="location">Follow our Discord for the announcement</div>
+            <div class="hero-kicker">European Quake Live LAN</div>
+            <h1><span class="line">QL City</span><span class="line">LAN Series</span></h1>
+            <div class="date">CTF and Duel. Next edition in planning: dates and location announced first on Discord.</div>
             <div class="hero-cta">
-                <a href="https://discord.gg/u8Ttp8frqU" class="btn-primary" target="_blank">Join our Discord</a>
-                <a href="#events" class="btn-secondary">Learn More</a>
+                <a href="https://discord.gg/u8Ttp8frqU" class="btn-primary" target="_blank">Join Discord</a>
+                <a href="#register" class="btn-secondary">Register</a>
             </div>
         </div>
     </section>
@@ -665,25 +780,25 @@
             <!-- Quick Stats -->
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number">TBA</div>
-                    <div class="stat-label">Player capacity</div>
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Editions played</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">2</div>
-                    <div class="stat-label">Tournaments (CTF &amp; Duel)</div>
+                    <div class="stat-number">CTF + Duel</div>
+                    <div class="stat-label">Tournaments</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">TBA</div>
-                    <div class="stat-label">Total Prize Pool</div>
+                    <div class="stat-number">&euro;3360</div>
+                    <div class="stat-label">Prizes paid out</div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card is-next">
                     <div class="stat-number">TBA</div>
-                    <div class="stat-label">Days of Competition</div>
+                    <div class="stat-label">Next edition</div>
                 </div>
             </div>
             
             <!-- Tournament Details -->
-            <h3 style="text-align: center; margin: 3rem 0 2rem; color: var(--text-light); font-size: 1.8rem;">Tournament Details</h3>
+            <h3 style="text-align: center; margin: 3rem 0 2rem; color: var(--text); font-size: 1.8rem;">Tournament Details</h3>
             <div class="tournaments-grid">
                 <div class="tournament-card ctf">
                     <h3>CTF Tournament</h3>
@@ -734,12 +849,12 @@
                         <li>Good travel connections within Europe</li>
                     </ul>
                     
-                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 1.5rem;">Our 2025 and 2026 editions were hosted at 1337 Camp Gaming House in <a href="https://maps.app.goo.gl/oVo62Sbc9gaxUQid9" target="_blank" style="color: var(--primary-purple);">Waiblingen, near Stuttgart</a>.</p>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 1.5rem;">Our 2025 and 2026 editions were hosted at 1337 Camp Gaming House in <a href="https://maps.app.goo.gl/oVo62Sbc9gaxUQid9" target="_blank" style="color: var(--accent);">Waiblingen, near Stuttgart</a>.</p>
                     
                     <a href="https://discord.gg/u8Ttp8frqU" class="btn-secondary" target="_blank">Venue Updates on Discord</a>
                 </div>
                 <div class="venue-image">
-                    <img src="assets/venue-1337camp.jpg" alt="1337 Camp Gaming House, venue of the 2025 and 2026 editions" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<div><p style=\'font-size: 3rem; margin-bottom: 1rem;\'>🏢</p><p>Venue to be announced</p><p style=\'color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;\'>Details will follow on Discord</p></div>');">
+                    <img src="assets/venue-1337camp.jpg" alt="1337 Camp Gaming House, venue of the 2025 and 2026 editions" style="width: 100%; height: 100%; object-fit: cover; border-radius: 0;" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<div><p style=\'font-size: 3rem; margin-bottom: 1rem;\'>🏢</p><p>Venue to be announced</p><p style=\'color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;\'>Details will follow on Discord</p></div>');">
                 </div>
             </div>
         </div>
@@ -775,7 +890,7 @@
                     <ul class="champions-list">
                         <li>🏆 CTF: Rapid Escape Division</li>
                         <li>🏆 Duel: Needy</li>
-                        <li><a href="results.html" style="color: var(--primary-purple);">Full results</a></li>
+                        <li><a href="results.html" style="color: var(--accent);">Full results</a></li>
                     </ul>
                 </div>
             </div>
@@ -795,7 +910,7 @@
             <p style="text-align: center; color: var(--text-muted); max-width: 700px; margin: 0 auto 3rem;">The QL City LAN Series has been made possible by the brands and venues below. This is a record of who has supported the series so far, not a list of confirmed partners for the next edition.</p>
 
             <div class="sponsors-current">
-                <h3 style="color: var(--text-light); margin-bottom: 2rem;">Main partner</h3>
+                <h3 style="color: var(--text); margin-bottom: 2rem;">Main partner</h3>
                 <div class="sponsor-main">
                     <a href="https://artisan-jp.com/global/?utm_source=citylanseries.com&utm_medium=website&utm_campaign=ql-city-lan-2026&utm_content=sponsor-cta-home" target="_blank" style="text-decoration: none;">
                         <img src="assets/artisan-logo.png" alt="Artisan" style="max-width: 200px; height: auto;" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<div style=\'font-family: Arial, sans-serif; font-size: 2rem; font-weight: 300; letter-spacing: 2px;\'>ARTISAN</div>');">
@@ -848,7 +963,7 @@
                 </p>
                 
                 <!-- Form connected to Formspree -->
-                <form action="https://formspree.io/f/mvgwaloj" method="POST" style="background: linear-gradient(135deg, rgba(123, 104, 238, 0.05), rgba(0, 61, 130, 0.05)); padding: 2rem; border-radius: 20px; border: 1px solid rgba(123, 104, 238, 0.2);">
+                <form action="https://formspree.io/f/mvgwaloj" method="POST" style="background: var(--bg-elevated); padding: 2rem; border-radius: 0; border: 1px solid var(--border);">
 
                     <!-- Formspree helpers -->
                     <input type="hidden" name="_subject" value="QL City LAN registration">
@@ -857,18 +972,18 @@
 
                     
                     <div style="margin-bottom: 1.5rem;">
-                        <label for="ingame-name" style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">In-Game Name *</label>
-                        <input type="text" id="ingame-name" name="ingame_name" required style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white;">
+                        <label for="ingame-name" style="display: block; margin-bottom: 0.5rem; color: var(--accent); font-weight: bold;">In-Game Name *</label>
+                        <input type="text" id="ingame-name" name="ingame_name" required style="width: 100%; padding: 0.75rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0; color: white;">
                     </div>
                     
                     <div style="margin-bottom: 1.5rem;">
-                        <label for="email" style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">Email *</label>
-                        <input type="email" id="email" name="email" required style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white;">
+                        <label for="email" style="display: block; margin-bottom: 0.5rem; color: var(--accent); font-weight: bold;">Email *</label>
+                        <input type="email" id="email" name="email" required style="width: 100%; padding: 0.75rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0; color: white;">
                     </div>
                     
                     <div style="margin-bottom: 1.5rem;">
-                        <label for="room-type" style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">Preferred Room Type</label>
-                        <select id="room-type" name="room_type" style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white; background-color: var(--dark-bg);">
+                        <label for="room-type" style="display: block; margin-bottom: 0.5rem; color: var(--accent); font-weight: bold;">Preferred Room Type</label>
+                        <select id="room-type" name="room_type" style="width: 100%; padding: 0.75rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0; color: white; background-color: var(--bg-elevated);">
                             <option value="">Select room type</option>
                             <option value="single">Single</option>
                             <option value="double">Double</option>
@@ -882,13 +997,13 @@
                     </div>
                     
                     <div style="margin-bottom: 1.5rem;">
-                        <label for="roommates" style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">Preferred Roommates (for group rooms)</label>
-                        <input type="text" id="roommates" name="roommates" placeholder="Leave blank for single room" style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white;">
+                        <label for="roommates" style="display: block; margin-bottom: 0.5rem; color: var(--accent); font-weight: bold;">Preferred Roommates (for group rooms)</label>
+                        <input type="text" id="roommates" name="roommates" placeholder="Leave blank for single room" style="width: 100%; padding: 0.75rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0; color: white;">
                     </div>
                     
                     <div style="margin-bottom: 1.5rem;">
-                        <label for="shirt-size" style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">T-Shirt Size *</label>
-                        <select id="shirt-size" name="shirt_size" required style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white; background-color: var(--dark-bg);">
+                        <label for="shirt-size" style="display: block; margin-bottom: 0.5rem; color: var(--accent); font-weight: bold;">T-Shirt Size *</label>
+                        <select id="shirt-size" name="shirt_size" required style="width: 100%; padding: 0.75rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0; color: white; background-color: var(--bg-elevated);">
                             <option value="">Select size</option>
                             <option value="XS">XS</option>
                             <option value="S">S</option>
@@ -901,14 +1016,14 @@
                     </div>
                     
                     <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">For Shirt Design</label>
-                        <input type="text" name="player_model" placeholder="Player model (Doom, Sarge, etc.)" style="width: 100%; padding: 0.75rem; margin-bottom: 0.5rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white;">
-                        <input type="text" name="country" placeholder="Country" style="width: 100%; padding: 0.75rem; margin-bottom: 0.5rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white;">
-                        <input type="text" name="favorite_weapon" placeholder="Favorite weapon" style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white;">
+                        <label style="display: block; margin-bottom: 0.5rem; color: var(--accent); font-weight: bold;">For Shirt Design</label>
+                        <input type="text" name="player_model" placeholder="Player model (Doom, Sarge, etc.)" style="width: 100%; padding: 0.75rem; margin-bottom: 0.5rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0; color: white;">
+                        <input type="text" name="country" placeholder="Country" style="width: 100%; padding: 0.75rem; margin-bottom: 0.5rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0; color: white;">
+                        <input type="text" name="favorite_weapon" placeholder="Favorite weapon" style="width: 100%; padding: 0.75rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0; color: white;">
                     </div>
                     
                     <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">Which events will you play? *</label>
+                        <label style="display: block; margin-bottom: 0.5rem; color: var(--accent); font-weight: bold;">Which events will you play? *</label>
                         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                             <label style="display: flex; align-items: center; cursor: pointer;">
                                 <input type="checkbox" name="events" value="CTF" style="margin-right: 0.5rem;">
@@ -922,7 +1037,7 @@
                     </div>
                     
                     <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">Media Preference</label>
+                        <label style="display: block; margin-bottom: 0.5rem; color: var(--accent); font-weight: bold;">Media Preference</label>
                         <label style="display: flex; align-items: flex-start; cursor: pointer; color: var(--text-muted);">
                             <input type="checkbox" name="media_low_profile" value="yes" style="margin-right: 0.75rem; margin-top: 0.35rem; flex-shrink: 0;">
                             <span>I would rather not be featured in close-up photos or on stream where that can reasonably be avoided.</span>
@@ -930,19 +1045,19 @@
                     </div>
                     
                     <div style="margin-bottom: 1.5rem;">
-                        <label for="comments" style="display: block; margin-bottom: 0.5rem; color: var(--primary-purple); font-weight: bold;">Additional Comments</label>
-                        <textarea id="comments" name="comments" rows="3" style="width: 100%; padding: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(123, 104, 238, 0.3); border-radius: 8px; color: white; resize: vertical;"></textarea>
+                        <label for="comments" style="display: block; margin-bottom: 0.5rem; color: var(--accent); font-weight: bold;">Additional Comments</label>
+                        <textarea id="comments" name="comments" rows="3" style="width: 100%; padding: 0.75rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0; color: white; resize: vertical;"></textarea>
                     </div>
                     
-                    <div style="margin-bottom: 1.5rem; padding: 1rem; background: rgba(123, 104, 238, 0.06); border: 1px solid rgba(123, 104, 238, 0.25); border-radius: 8px;">
+                    <div style="margin-bottom: 1.5rem; padding: 1rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0;">
                         <label for="media-consent" style="display: flex; align-items: flex-start; cursor: pointer;">
                             <input type="checkbox" id="media-consent" name="media_consent" value="yes" required style="margin-right: 0.75rem; margin-top: 0.35rem; flex-shrink: 0;">
                             <span>I agree that my nickname and photos/videos of me from the event may be used on this website, our Discord, and event media (streams, VODs, results). *</span>
                         </label>
-                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.75rem; margin-left: 1.9rem;">See our <a href="privacy.html" style="color: var(--primary-purple);">Privacy Notice</a> for what we collect, how long we keep it, and how to ask for something to be removed.</p>
+                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.75rem; margin-left: 1.9rem;">See our <a href="privacy.html" style="color: var(--accent);">Privacy Notice</a> for what we collect, how long we keep it, and how to ask for something to be removed.</p>
                     </div>
 
-                    <button type="submit" style="width: 100%; padding: 1rem; background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue)); color: white; border: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s;">
+                    <button type="submit" style="width: 100%; padding: 1rem; background: linear-gradient(90deg, var(--accent), var(--accent)); color: white; border: none; border-radius: 0; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s;">
                         Submit Registration
                     </button>
                 </form>
@@ -960,69 +1075,69 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="faq" id="faq" style="background: var(--darker-bg);">
+    <section class="faq" id="faq" style="background: var(--bg);">
         <div class="container">
             <h2>Frequently Asked Questions</h2>
             
             <div class="faq-grid" style="max-width: 900px; margin: 0 auto;">
                 <div class="faq-item" style="margin-bottom: 2rem;">
-                    <h3 style="color: var(--primary-purple); margin-bottom: 0.5rem;">When and where is the event?</h3>
+                    <h3 style="color: var(--accent); margin-bottom: 0.5rem;">When and where is the event?</h3>
                     <p style="color: var(--text-muted);">The next edition is in planning. Dates and location are still to be announced &ndash; join our Discord to hear it first.</p>
                 </div>
                 
                 <div class="faq-item" style="margin-bottom: 2rem;">
-                    <h3 style="color: var(--primary-purple); margin-bottom: 0.5rem;">What equipment is provided?</h3>
+                    <h3 style="color: var(--accent); margin-bottom: 0.5rem;">What equipment is provided?</h3>
                     <p style="color: var(--text-muted);">Exact specs depend on the venue and will be confirmed with the announcement. Previous editions ran high-end PCs on high-refresh-rate monitors. Preferably bring your own peripherals (mouse, keyboard, headset).</p>
                 </div>
                 
                 <div class="faq-item" style="margin-bottom: 2rem;">
-                    <h3 style="color: var(--primary-purple); margin-bottom: 0.5rem;">Where can I find the rules?</h3>
-                    <p style="color: var(--text-muted);">For the latest rules, please check our Discord #rules and #info (formats, maps, pick/ban, any changes) channels: <a href="https://discord.gg/u8Ttp8frqU" target="_blank" style="color: var(--primary-purple);">discord.gg/u8Ttp8frqU</a></p>
+                    <h3 style="color: var(--accent); margin-bottom: 0.5rem;">Where can I find the rules?</h3>
+                    <p style="color: var(--text-muted);">For the latest rules, please check our Discord #rules and #info (formats, maps, pick/ban, any changes) channels: <a href="https://discord.gg/u8Ttp8frqU" target="_blank" style="color: var(--accent);">discord.gg/u8Ttp8frqU</a></p>
                 </div>
                 
                 <div class="faq-item" style="margin-bottom: 2rem;">
-                    <h3 style="color: var(--primary-purple); margin-bottom: 0.5rem;">Do I need a team for CTF?</h3>
+                    <h3 style="color: var(--accent); margin-bottom: 0.5rem;">Do I need a team for CTF?</h3>
                     <p style="color: var(--text-muted);">No - CTF uses a draft system to balance teams. Captains will pick players for their teams.</p>
                 </div>
                 
                 <div class="faq-item" style="margin-bottom: 2rem;">
-                    <h3 style="color: var(--primary-purple); margin-bottom: 0.5rem;">What's the minimum age?</h3>
+                    <h3 style="color: var(--accent); margin-bottom: 0.5rem;">What's the minimum age?</h3>
                     <p style="color: var(--text-muted);">16+ (under 18 may need guardian consent depending on venue policy).</p>
                 </div>
                 
                 <div class="faq-item" style="margin-bottom: 2rem;">
-                    <h3 style="color: var(--primary-purple); margin-bottom: 0.5rem;">Where do I sign up?</h3>
-                    <p style="color: var(--text-muted);">Use the registration form on the <a href="#register" style="color: var(--primary-purple);">Register</a> section of this page. Status updates will be posted in Discord.</p>
+                    <h3 style="color: var(--accent); margin-bottom: 0.5rem;">Where do I sign up?</h3>
+                    <p style="color: var(--text-muted);">Use the registration form on the <a href="#register" style="color: var(--accent);">Register</a> section of this page. Status updates will be posted in Discord.</p>
                 </div>
                 
                 <div class="faq-item" style="margin-bottom: 2rem;">
-                    <h3 style="color: var(--primary-purple); margin-bottom: 0.5rem;">Can I attend without playing?</h3>
-                    <p style="color: var(--text-muted);">There is a possibility for spectators. For details, check on our <a href="https://discord.gg/u8Ttp8frqU" target="_blank" style="color: var(--primary-purple);">Discord</a>.</p>
+                    <h3 style="color: var(--accent); margin-bottom: 0.5rem;">Can I attend without playing?</h3>
+                    <p style="color: var(--text-muted);">There is a possibility for spectators. For details, check on our <a href="https://discord.gg/u8Ttp8frqU" target="_blank" style="color: var(--accent);">Discord</a>.</p>
                 </div>
                 
                 <div class="faq-item" style="margin-bottom: 2rem;">
-                    <h3 style="color: var(--primary-purple); margin-bottom: 0.5rem;">Is accommodation included?</h3>
+                    <h3 style="color: var(--accent); margin-bottom: 0.5rem;">Is accommodation included?</h3>
                     <p style="color: var(--text-muted);">Previous editions offered on-site accommodation with various room options. Whether that is available next time depends on the venue &ndash; details will follow with the announcement.</p>
                 </div>
                 
                 <div class="faq-item" style="margin-bottom: 2rem;">
-                    <h3 style="color: var(--primary-purple); margin-bottom: 0.5rem;">What's the skill level requirement?</h3>
+                    <h3 style="color: var(--accent); margin-bottom: 0.5rem;">What's the skill level requirement?</h3>
                     <p style="color: var(--text-muted);">Join our Discord server to find out details. For CTF there is a minimal threshold of knowledge and experience needed (nr. of games on HOQ pickup and organizer assesment).</p>
                 </div>
                 
                 <div class="faq-item" style="margin-bottom: 2rem;">
-                    <h3 style="color: var(--primary-purple); margin-bottom: 0.5rem;">Will there be streaming/VODs?</h3>
-                    <p style="color: var(--text-muted);">Selected matches may be streamed on <a href="https://www.twitch.tv/qllancityseries" target="_blank" style="color: var(--primary-purple);">twitch.tv/qllancityseries</a>. Links will be posted in Discord.</p>
+                    <h3 style="color: var(--accent); margin-bottom: 0.5rem;">Will there be streaming/VODs?</h3>
+                    <p style="color: var(--text-muted);">Selected matches may be streamed on <a href="https://www.twitch.tv/qllancityseries" target="_blank" style="color: var(--accent);">twitch.tv/qllancityseries</a>. Links will be posted in Discord.</p>
                 </div>
                 
                 <div class="faq-item" style="margin-bottom: 2rem;">
-                    <h3 style="color: var(--primary-purple); margin-bottom: 0.5rem;">What about food and drinks?</h3>
+                    <h3 style="color: var(--accent); margin-bottom: 0.5rem;">What about food and drinks?</h3>
                     <p style="color: var(--text-muted);">Previous venues had a kitchen and lounge area with restaurants and shops nearby. Catering details will follow with the venue announcement.</p>
                 </div>
             </div>
             
-            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, rgba(123, 104, 238, 0.05), rgba(0, 61, 130, 0.05)); border-radius: 20px;">
-                <h3 style="color: var(--primary-purple); margin-bottom: 1rem;">Have More Questions?</h3>
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--bg-elevated); border-radius: 0;">
+                <h3 style="color: var(--accent); margin-bottom: 1rem;">Have More Questions?</h3>
                 <p style="margin-bottom: 1.5rem;">Join our Discord community for instant answers and updates!</p>
                 <a href="https://discord.gg/u8Ttp8frqU" class="btn-primary" target="_blank">Join our Discord</a>
             </div>
@@ -1121,7 +1236,7 @@
         // Generate particle effects
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
-            const particleCount = window.innerWidth > 768 ? 15 : 8;
+            const particleCount = window.innerWidth > 768 ? 8 : 5;
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
