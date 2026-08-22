@@ -366,12 +366,44 @@
             color: var(--text-muted);
         }
 
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+            align-items: stretch;
+        }
+
         .testimonial {
             background: var(--bg-elevated);
             border: 1px solid var(--border);
             border-left: 2px solid var(--accent);
             padding: 2rem;
-            margin: 3rem 0 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .benefit-card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-left: 2px solid var(--accent);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.15rem;
+            letter-spacing: 1px;
+            color: var(--text);
+            margin-bottom: 0.85rem;
+        }
+
+        .benefit-card p {
+            color: var(--text-muted);
         }
 
         .testimonial p {
@@ -799,8 +831,8 @@
                     <div class="stat-label">Tournaments</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">&euro;3360</div>
-                    <div class="stat-label">Prizes paid out</div>
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Community run</div>
                 </div>
                 <div class="stat-card is-next">
                     <div class="stat-number">TBA</div>
@@ -854,7 +886,7 @@
                     <ul class="venue-features">
                         <li>High-end tournament PCs</li>
                         <li>High-refresh-rate monitors</li>
-                        <li>On-site accommodation</li>
+                        <li>On-site accommodation is welcomed</li>
                         <li>Kitchen and lounge areas</li>
                         <li>Dedicated tournament space</li>
                         <li>Good travel connections within Europe</li>
@@ -906,9 +938,15 @@
                 </div>
             </div>
             
-            <div class="testimonial">
-                <p>"Organized by players, for players. The QL City LAN Series brings together the European Quake Live community for an unforgettable weekend of competition and fun."</p>
-                <div class="testimonial-author">— The Organizers</div>
+            <div class="benefits-grid">
+                <div class="testimonial">
+                    <p>"Organized by players, for players. The QL City LAN Series brings together the European Quake Live community for an unforgettable weekend of competition and fun."</p>
+                    <div class="testimonial-author">— The Organizers</div>
+                </div>
+                <div class="benefit-card">
+                    <h3>Community Quake at its peak</h3>
+                    <p>One of the few places left where competitive Quake Live happens on LAN. Community-organized, seriously played. By players, for players.</p>
+                </div>
             </div>
         </div>
     </section>
