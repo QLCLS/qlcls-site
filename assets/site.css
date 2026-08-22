@@ -1,23 +1,27 @@
-/* QL City LAN Series - shared base styles.
-   Extracted from the blocks that were byte-identical across pages.
-   Page-specific rules stay in each page's own <style> block, which is
-   loaded after this file and therefore still wins. */
+/* QL City LAN Series - "Dark Arena" shared base styles.
+   Loaded before each page's own <style> block, which may override it.
+   Palette is flat: no gradients, no glows, square corners throughout. */
 
-* {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 :root {
-    --primary-purple: #7B68EE;
-    --primary-blue: #003D82;
-    --dark-bg: #0A0B1E;
-    --darker-bg: #050510;
-    --text-light: #ffffff;
-    --text-muted: #a8a8b3;
-    --accent-cyan: #00ffff;
-    --accent-orange: #ff6b35;
+    --bg: #0c0c0e;
+    --bg-elevated: #131316;
+    --border: #1e1e22;
+    --text: #f2f0ee;
+    --text-muted: #b9b5b0;
+    --text-faint: #8d8983;
+    --accent: #d61c24;
+    --accent-bright: #ff2d2d;
+
+    --font-display: 'Chakra Petch', 'Segoe UI', system-ui, sans-serif;
+    --font-body: 'Barlow', 'Segoe UI', system-ui, sans-serif;
 }
 
 html {
@@ -25,11 +29,47 @@ html {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--dark-bg);
-    color: var(--text-light);
+    font-family: var(--font-body);
+    font-weight: 400;
+    background-color: var(--bg);
+    color: var(--text);
     overflow-x: hidden;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.15;
+}
+
+a {
+    color: var(--accent-bright);
+}
+
+img {
+    max-width: 100%;
+}
+
+::selection {
+    background: var(--accent);
+    color: var(--text);
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent-bright);
+    outline-offset: 2px;
+}
+
+/* ---------- Navigation (shared by every page) ---------- */
+
+nav {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 0;
 }
 
 .nav-container {
@@ -42,32 +82,149 @@ body {
 }
 
 .nav-logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text);
     text-decoration: none;
 }
 
 .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 1.75rem;
     align-items: center;
     list-style: none;
 }
 
 .nav-links a {
-    color: var(--text-light);
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
     text-decoration: none;
-    transition: color 0.3s;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
 }
 
 .nav-links a:hover {
-    color: var(--primary-purple);
+    color: var(--text);
 }
 
+.nav-links a.active {
+    color: var(--text);
+    border-bottom-color: var(--accent);
+}
+
+/* ---------- Buttons (shared) ---------- */
+
+.btn-primary,
+.btn-secondary,
+.discord-btn {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    padding: 0.85rem 1.75rem;
+    border-radius: 0;
+    transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.btn-primary,
+.discord-btn {
+    background: var(--accent);
+    color: var(--text);
+    border: 1px solid var(--accent);
+}
+
+.btn-primary:hover,
+.discord-btn:hover {
+    background: var(--accent-bright);
+    border-color: var(--accent-bright);
+}
+
+.discord-btn {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.8rem;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--text);
+}
+
+/* ---------- Section label: small caps with a 2px red rule ---------- */
+
+.section-label {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.section-label::before {
+    content: '';
+    width: 28px;
+    height: 2px;
+    background: var(--accent);
+    flex-shrink: 0;
+}
+
+/* ---------- Shared bits ---------- */
+
 .stat-label {
-    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-faint);
     margin-top: 0.5rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+section {
+    padding: 5rem 0;
+}
+
+footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 3rem 2rem 2rem;
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 1.25rem;
+    }
+
+    .container {
+        padding: 0 1.25rem;
+    }
+
+    section {
+        padding: 3.5rem 0;
+    }
 }
