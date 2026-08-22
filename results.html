@@ -15,78 +15,71 @@
     <link rel="stylesheet" href="assets/site.css">
 
     <style>
-        /* Navigation */
+        /* ---------- Navigation ---------- */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 11, 30, 0.95);
-            backdrop-filter: blur(10px);
             z-index: 1000;
-            padding: 1rem 0;
         }
 
-        .discord-btn {
-            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
-            color: white;
-            padding: 0.6rem 1.5rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        /* Header */
+        /* ---------- Header ---------- */
         .page-header {
-            padding: 8rem 2rem 4rem;
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(0, 61, 130, 0.1));
+            padding: 9rem 2rem 4rem;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
             text-align: center;
         }
 
         .page-header h1 {
-            font-size: 3rem;
-            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 2.75rem;
+            letter-spacing: 2px;
+            color: var(--text);
             margin-bottom: 1rem;
         }
 
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        .page-header p {
+            color: var(--text-muted);
         }
 
-        /* Event Selection */
+        /* ---------- Event tabs ---------- */
         .event-selector {
             display: flex;
-            gap: 1rem;
+            gap: 1px;
             justify-content: center;
             margin: 3rem 0;
             flex-wrap: wrap;
+            background: var(--border);
+            border: 1px solid var(--border);
         }
 
         .event-btn {
-            padding: 1rem 2rem;
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(0, 61, 130, 0.1));
-            border: 2px solid var(--primary-purple);
-            border-radius: 30px;
-            color: var(--text-light);
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.9rem 1.75rem;
+            background: var(--bg-elevated);
+            border: none;
+            border-radius: 0;
+            color: var(--text-muted);
             cursor: pointer;
-            transition: all 0.3s;
-            font-size: 1rem;
+            transition: color 0.15s, background 0.15s;
+            flex: 1 1 auto;
         }
 
         .event-btn:hover {
-            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
-            transform: translateY(-2px);
+            color: var(--text);
+            background: #17171b;
         }
 
         .event-btn.active {
-            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
+            background: var(--accent);
+            color: var(--text);
         }
 
-        /* Results Section */
+        /* ---------- Results ---------- */
         .results-content {
             padding: 2rem 0 4rem;
         }
@@ -100,63 +93,80 @@
         }
 
         .event-header {
-            text-align: center;
+            text-align: left;
             margin-bottom: 3rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border);
         }
 
         .event-header h2 {
-            font-size: 2.5rem;
-            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            color: var(--text);
+            margin-bottom: 0.35rem;
         }
 
         .event-date {
-            color: var(--text-muted);
-            font-size: 1.2rem;
+            font-family: var(--font-display);
+            color: var(--text-faint);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        /* Tournament Results */
+        /* ---------- Tournament blocks ---------- */
         .tournament-section {
             margin-bottom: 3rem;
+            border: 1px solid var(--border);
         }
 
         .tournament-header {
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(0, 61, 130, 0.1));
-            padding: 1.5rem;
-            border-radius: 15px 15px 0 0;
-            margin-bottom: 0;
+            background: var(--bg-elevated);
+            border-bottom: 1px solid var(--border);
+            padding: 1.25rem 1.5rem;
+            position: relative;
+        }
+
+        .tournament-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 48px;
+            height: 2px;
+            background: var(--accent);
         }
 
         .tournament-header h3 {
-            font-size: 1.8rem;
-            color: var(--text-light);
+            font-size: 1.15rem;
+            letter-spacing: 2px;
+            color: var(--text);
         }
 
         .podium {
-            background: var(--darker-bg);
-            padding: 2rem;
-            border-radius: 0 0 15px 15px;
-            margin-bottom: 2rem;
+            background: var(--bg);
+            padding: 1.5rem;
         }
 
         .place {
             display: flex;
             align-items: center;
             padding: 1rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.05), rgba(0, 61, 130, 0.05));
-            border-radius: 10px;
-            border: 1px solid rgba(123, 104, 238, 0.2);
+            margin-bottom: 1px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+        }
+
+        .place:last-child {
+            margin-bottom: 0;
         }
 
         .place-number {
-            font-size: 2rem;
-            font-weight: bold;
-            width: 60px;
+            font-size: 1.5rem;
+            width: 52px;
             text-align: center;
             margin-right: 1rem;
+            flex-shrink: 0;
         }
 
         .gold { color: #FFD700; }
@@ -164,136 +174,193 @@
         .bronze { color: #CD7F32; }
 
         .player-name, .team-name {
-            font-size: 1.2rem;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text);
             flex: 1;
+        }
+
+        .player-name small, .team-name small {
+            display: block;
+            font-family: var(--font-body);
+            font-weight: 400;
+            font-size: 0.85rem;
+            text-transform: none;
+            letter-spacing: 0;
+            color: var(--text-faint);
+            margin-top: 0.25rem;
         }
 
         .prize {
             color: var(--text-muted);
+            font-size: 0.9rem;
+            text-align: right;
+            flex-shrink: 0;
+            max-width: 240px;
         }
 
-        /* Stats Grid */
+        /* ---------- Event stats ---------- */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1px;
             margin-top: 2rem;
+            background: var(--border);
+            border: 1px solid var(--border);
         }
 
         .stat-box {
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(0, 61, 130, 0.1));
+            background: var(--bg-elevated);
             padding: 1.5rem;
-            border-radius: 15px;
             text-align: center;
-            border: 1px solid rgba(123, 104, 238, 0.2);
         }
 
         .stat-value {
-            font-size: 2rem;
-            font-weight: bold;
-            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text);
         }
 
-        /* Links Section */
+        /* ---------- Links ---------- */
         .event-links {
             margin-top: 2rem;
             padding: 1.5rem;
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.05), rgba(0, 61, 130, 0.05));
-            border-radius: 15px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
             text-align: center;
         }
 
         .event-links h4 {
-            color: var(--primary-purple);
-            margin-bottom: 1rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-faint);
+            margin-bottom: 1.25rem;
         }
 
         .link-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 0.75rem;
             justify-content: center;
             flex-wrap: wrap;
         }
 
         .link-btn {
-            padding: 0.75rem 1.5rem;
-            background: rgba(123, 104, 238, 0.2);
-            color: var(--text-light);
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.7rem 1.25rem;
+            background: transparent;
+            color: var(--text);
             text-decoration: none;
-            border-radius: 25px;
-            transition: all 0.3s;
-            border: 1px solid var(--primary-purple);
+            border-radius: 0;
+            border: 1px solid var(--border);
+            transition: border-color 0.15s, color 0.15s;
         }
 
         .link-btn:hover {
-            background: var(--primary-purple);
-            transform: translateY(-2px);
+            border-color: var(--accent);
+            color: var(--text);
         }
 
         /* Placeholder for links we do not have yet */
         .link-btn.pending {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px dashed rgba(123, 104, 238, 0.5);
-            color: var(--text-muted);
+            background: transparent;
+            border: 1px dashed var(--border);
+            color: var(--text-faint);
             cursor: default;
         }
 
-        /* Full Results Table */
+        .link-btn.pending:hover {
+            border-color: var(--border);
+            color: var(--text-faint);
+        }
+
+        /* ---------- Table ---------- */
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 1rem;
         }
 
         th, td {
-            padding: 0.75rem;
+            padding: 1rem;
             text-align: left;
-            border-bottom: 1px solid rgba(123, 104, 238, 0.2);
+            border-bottom: 1px solid var(--border);
         }
 
         th {
-            background: linear-gradient(135deg, rgba(123, 104, 238, 0.1), rgba(0, 61, 130, 0.1));
-            color: var(--primary-purple);
-            font-weight: bold;
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-faint);
         }
 
         tr:hover {
-            background: rgba(123, 104, 238, 0.05);
+            background: var(--bg-elevated);
         }
 
-        /* Footer */
-        footer {
-            background: var(--darker-bg);
-            padding: 3rem 2rem 2rem;
-            border-top: 1px solid rgba(123, 104, 238, 0.2);
-            margin-top: 4rem;
-        }
-
+        /* ---------- Footer ---------- */
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
+            color: var(--text-faint);
+            font-size: 0.9rem;
         }
 
         .footer-content a {
-            color: var(--primary-purple);
+            color: var(--text-muted);
             text-decoration: none;
             margin: 0 1rem;
+            transition: color 0.15s;
         }
 
-        /* Responsive */
+        .footer-content a:hover {
+            color: var(--accent-bright);
+        }
+
+        /* ---------- Responsive ---------- */
         @media (max-width: 768px) {
+            .page-header {
+                padding: 7rem 1.25rem 3rem;
+            }
+
             .page-header h1 {
-                font-size: 2rem;
+                font-size: 1.9rem;
             }
 
             .event-header h2 {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
+            }
+
+            .event-selector {
+                flex-direction: column;
             }
 
             .stats-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .place {
+                flex-wrap: wrap;
+            }
+
+            .prize {
+                text-align: left;
+                max-width: none;
+                width: 100%;
+                margin-top: 0.5rem;
+                padding-left: 68px;
             }
         }
     </style>
@@ -306,7 +373,7 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#events">Events</a></li>
-                <li><a href="results.html" style="color: var(--primary-purple);">Results</a></li>
+                <li><a href="results.html" class="active">Results</a></li>
                 <li><a href="https://discord.gg/u8Ttp8frqU" class="discord-btn" target="_blank">Join Discord</a></li>
             </ul>
         </div>
