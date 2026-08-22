@@ -466,12 +466,23 @@
             border-radius: 0 !important;
         }
 
-        .register label {
+        .register .field-label {
             font-family: var(--font-display);
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            color: var(--text-faint);
+        }
+
+        /* option and consent labels stay body copy - they are sentences */
+        .register label:not(.field-label),
+        .register label:not(.field-label) span {
+            font-family: var(--font-body);
+            font-weight: 400;
+            text-transform: none;
+            letter-spacing: 0;
+            color: var(--text-muted);
         }
 
         .register input[type="text"],
@@ -972,17 +983,17 @@
 
                     
                     <div style="margin-bottom: 1.5rem;">
-                        <label for="ingame-name" style="display: block; margin-bottom: 0.5rem; color: var(--accent); font-weight: bold;">In-Game Name *</label>
+                        <label class="field-label" for="ingame-name" style="display: block; margin-bottom: 0.5rem; ">In-Game Name *</label>
                         <input type="text" id="ingame-name" name="ingame_name" required style="width: 100%; padding: 0.75rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0; color: white;">
                     </div>
                     
                     <div style="margin-bottom: 1.5rem;">
-                        <label for="email" style="display: block; margin-bottom: 0.5rem; color: var(--accent); font-weight: bold;">Email *</label>
+                        <label class="field-label" for="email" style="display: block; margin-bottom: 0.5rem; ">Email *</label>
                         <input type="email" id="email" name="email" required style="width: 100%; padding: 0.75rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0; color: white;">
                     </div>
                     
                     <div style="margin-bottom: 1.5rem;">
-                        <label for="room-type" style="display: block; margin-bottom: 0.5rem; color: var(--accent); font-weight: bold;">Preferred Room Type</label>
+                        <label class="field-label" for="room-type" style="display: block; margin-bottom: 0.5rem; ">Preferred Room Type</label>
                         <select id="room-type" name="room_type" style="width: 100%; padding: 0.75rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0; color: white; background-color: var(--bg-elevated);">
                             <option value="">Select room type</option>
                             <option value="single">Single</option>
@@ -997,12 +1008,12 @@
                     </div>
                     
                     <div style="margin-bottom: 1.5rem;">
-                        <label for="roommates" style="display: block; margin-bottom: 0.5rem; color: var(--accent); font-weight: bold;">Preferred Roommates (for group rooms)</label>
+                        <label class="field-label" for="roommates" style="display: block; margin-bottom: 0.5rem; ">Preferred Roommates (for group rooms)</label>
                         <input type="text" id="roommates" name="roommates" placeholder="Leave blank for single room" style="width: 100%; padding: 0.75rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0; color: white;">
                     </div>
                     
                     <div style="margin-bottom: 1.5rem;">
-                        <label for="shirt-size" style="display: block; margin-bottom: 0.5rem; color: var(--accent); font-weight: bold;">T-Shirt Size *</label>
+                        <label class="field-label" for="shirt-size" style="display: block; margin-bottom: 0.5rem; ">T-Shirt Size *</label>
                         <select id="shirt-size" name="shirt_size" required style="width: 100%; padding: 0.75rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0; color: white; background-color: var(--bg-elevated);">
                             <option value="">Select size</option>
                             <option value="XS">XS</option>
@@ -1016,14 +1027,14 @@
                     </div>
                     
                     <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; color: var(--accent); font-weight: bold;">For Shirt Design</label>
+                        <label class="field-label" style="display: block; margin-bottom: 0.5rem; ">For Shirt Design</label>
                         <input type="text" name="player_model" placeholder="Player model (Doom, Sarge, etc.)" style="width: 100%; padding: 0.75rem; margin-bottom: 0.5rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0; color: white;">
                         <input type="text" name="country" placeholder="Country" style="width: 100%; padding: 0.75rem; margin-bottom: 0.5rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0; color: white;">
                         <input type="text" name="favorite_weapon" placeholder="Favorite weapon" style="width: 100%; padding: 0.75rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0; color: white;">
                     </div>
                     
                     <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; color: var(--accent); font-weight: bold;">Which events will you play? *</label>
+                        <label class="field-label" style="display: block; margin-bottom: 0.5rem; ">Which events will you play? *</label>
                         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                             <label style="display: flex; align-items: center; cursor: pointer;">
                                 <input type="checkbox" name="events" value="CTF" style="margin-right: 0.5rem;">
@@ -1037,7 +1048,7 @@
                     </div>
                     
                     <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; color: var(--accent); font-weight: bold;">Media Preference</label>
+                        <label class="field-label" style="display: block; margin-bottom: 0.5rem; ">Media Preference</label>
                         <label style="display: flex; align-items: flex-start; cursor: pointer; color: var(--text-muted);">
                             <input type="checkbox" name="media_low_profile" value="yes" style="margin-right: 0.75rem; margin-top: 0.35rem; flex-shrink: 0;">
                             <span>I would rather not be featured in close-up photos or on stream where that can reasonably be avoided.</span>
@@ -1045,7 +1056,7 @@
                     </div>
                     
                     <div style="margin-bottom: 1.5rem;">
-                        <label for="comments" style="display: block; margin-bottom: 0.5rem; color: var(--accent); font-weight: bold;">Additional Comments</label>
+                        <label class="field-label" for="comments" style="display: block; margin-bottom: 0.5rem; ">Additional Comments</label>
                         <textarea id="comments" name="comments" rows="3" style="width: 100%; padding: 0.75rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0; color: white; resize: vertical;"></textarea>
                     </div>
                     
